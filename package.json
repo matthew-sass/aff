@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.2.3"
+    "astro": "^5.2.3",
+    "astro-navbar": "^2.3.9",
+    "decap-cms-app": "^3.6.1"
   }
 }

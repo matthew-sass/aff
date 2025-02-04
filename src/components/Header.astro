@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../logo.png'
+---
+
+<div class="navbar">
+    <Image src={logo} alt="Logo" height={75}/>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</div>
+
+<style>
+
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ul{
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    li{
+        padding: 10px 20px;
+    }
+
+    a{
+        color: #efeeee;
+        text-decoration: none;
+    }
+
+    a:hover{
+        text-decoration: underline;
+        background: linear-gradient(to right, #ff7e5f, rgb(128, 26, 128));
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+</style>
