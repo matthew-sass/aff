@@ -1,6 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro"
+const posts = (await Astro.glob('./posts/*.{md,mdx}')).sort(
+	(a, b) =>
+		new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+);
 ---
+
 <Layout>
     <h2>Blog</h2>
 </Layout>

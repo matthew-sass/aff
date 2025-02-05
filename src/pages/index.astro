@@ -5,16 +5,4 @@ import Layout from "../layouts/Layout.astro";
   <h2>About</h2>
 </Layout>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", (user) => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  });
 </script>
