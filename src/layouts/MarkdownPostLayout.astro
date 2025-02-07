@@ -4,10 +4,8 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout pageTitle={frontmatter.title}>
-  <p><em>{frontmatter.description}</em></p>
+  <h1>{frontmatter.title}</h1>
   <img src={frontmatter.heroImage} width="300" alt="" />
-
-  
 
   <slot />
 </Layout>
