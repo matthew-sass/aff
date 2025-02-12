@@ -20,20 +20,19 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "gallery"
-  label: "Gallery"
-  folder: "src/pages/gallery"
-  create: true
-  fields:
-    - { label: "Title", name: "title", widget: "string" }
-    - label: "Images"
-      name: "images"
-      widget: "list"
-      allow_add: true
-      field: { label: "Image", name: "image", widget: "image" }
-    - label: "Thumbnail"
-      name: "thumbnail"
-      widget: "image"
-      media_library:
-        config:
-          multiple: false
-  
+    label: "Gallery"
+    folder: "src/pages/gallery"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        allow_add: true
+        field: { label: "Image", name: "image", widget: "image" }
+      - label: "Thumbnail"
+        name: "thumbnail"
+        widget: "image"
+        media_library:
+          config:
+            multiple: false
