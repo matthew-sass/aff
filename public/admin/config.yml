@@ -26,6 +26,7 @@ collections:
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/GalleryPostLayout.astro" }
       - label: "Images"
         name: "images"
         widget: "list"
