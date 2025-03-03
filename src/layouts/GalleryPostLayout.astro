@@ -1,0 +1,15 @@
+---
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+console.log(frontmatter)
+---
+<Layout>
+
+    <h2>{frontmatter.title}</h2>
+    <div class="gallery">
+      {frontmatter.images.map((image) => (
+        <img src={image} alt="Gallery image" loading="lazy" />
+      ))}
+    </div>
+</Layout>

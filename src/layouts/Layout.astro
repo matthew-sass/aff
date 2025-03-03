@@ -13,8 +13,68 @@ import Header from "../components/Header.astro";
   </head>
   <body>
     <Header />
-    <main>
-      <slot />
-    </main>
+    <div class="container">
+      <div class="side-image left">
+        <img src="../public/uploads/affflower.png" alt="Left Image" />
+      </div>
+      
+      <main class="content">
+        <slot />
+      </main>
+
+      <div class="side-image right">
+        <img src="../public/uploads/affflower.png" alt="Right Image" />
+      </div>
+    </div>
   </body>
 </html>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; 
+    position: relative;
+  }
+
+  .side-image {
+    position: fixed;
+    top: 15%;
+    width: 300px;
+  }
+
+  .left {
+    left: 20px;
+  }
+
+  .right {
+    right: 20px;
+    transform: scaleX(-1);
+  }
+
+  .side-image img {
+    max-width: 100%;
+    top: 10%;
+    height: auto;
+    z-index: -1;
+  }
+
+  .content {
+    max-width: 800px; 
+    padding: 20px;
+    margin: 100px auto 0 auto;
+    text-align: left; 
+  }
+</style>

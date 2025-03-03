@@ -3,18 +3,32 @@ import { Image } from 'astro:assets';
 import logo from '../logo.png'
 ---
 
-<div class="navbar">
-    <Image src={logo} alt="Logo" height={75}/>
-
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/gallery">Gallery</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/contact">Contact</a></li>
-    </ul>
-</div>
+<header>
+    <div class="navbar">
+        <a href="/">
+            <Image src={logo} alt="Logo" height={75} class="logo"/>
+        </a>
+    
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </div>
+</header>
 
 <style>
+
+    header {
+        border-bo: 1px solid #efeeee;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        background-color: #34312f;
+        padding: 10px;
+    }
 
     .navbar{
         display: flex;
@@ -39,8 +53,17 @@ import logo from '../logo.png'
 
     a:hover{
         text-decoration: underline;
-        background: linear-gradient(to right, #ff7e5f, rgb(128, 26, 128));
-        -webkit-background-clip: text;
-        color: transparent;
+        
+        color: orange;
+    }
+
+    .logo {
+        border-radius: 75px;
+        padding: 10px;
+        transition: transform 0.3s ease; 
+    }
+
+    .logo:hover {
+        transform: scale(1.1); 
     }
 </style>
