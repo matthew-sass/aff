@@ -25,75 +25,8 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
 
 <style>
 
-	main {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
-		margin: 0;
-	}
-
-    .zoom {
-        transition: transform 0.2s; 
-		padding: 10px;
+    ul {
+        list-style: none;
     }
-
-    .zoom:hover {
-        transform: scale(1.01);
-    }
-
-    .list-container {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-		padding: 20px;
-	}
-
-	.text-content {
-        display: flex;
-        flex-direction: column;
-    }
-
-	.subtitle {
-		display: -webkit-box;
-		-webkit-line-clamp: 10; /* Change this number for more lines */
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-		max-width: 100%;
-	}
-
-	ul {
-		list-style: none;
-		justify-items: center;
-	}
-
-	li {
-		display: inline-block;
-		padding: 10px;
-		width: 100%;
-		max-width: 700px;
-		max-height: 500px;
-		transition: border-color 0.3s ease-in-out;
-		transition: background-color 0.3s ease-in-out;
-	}
-
-	li:hover {
-		border-bottom: 3px solid;
-		margin-bottom: -3px;
-		border-color: #efeeee;
-		background-color: #403c3a;
-	}
-
-	li img {
-		padding-left: 10px;
-	}
-
-	a {
-		color: #efeeee;
-		text-decoration: none;
-		display: flex;
-		width: 100%;
-		justify-content: space-between;
-	}
 
 </style>

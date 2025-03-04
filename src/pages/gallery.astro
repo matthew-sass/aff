@@ -22,45 +22,10 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
 </Layout>
 
 <style>
+    img {
+        margin: auto;
+    }
     ul {
         list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    .image-container {
-        position: relative;
-        display: inline-block;
-        overflow: hidden;
-    }
-
-    .title-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        transform: translateY(100%);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .image-container:hover .title-bar {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    .title {
-        margin: 0;
-        padding: 0;
-    }
-
-    .image-container img {
-        display: block;
-        width: 100%;
     }
 </style>

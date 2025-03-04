@@ -6,10 +6,20 @@ console.log(frontmatter)
 ---
 <Layout>
 
+  <div class="content">
     <h2>{frontmatter.title}</h2>
     <div class="gallery">
       {frontmatter.images.map((image) => (
         <img src={image} alt="Gallery image" loading="lazy" />
       ))}
     </div>
+  </div>
+    
 </Layout>
+
+<style>
+  .content {
+    margin-top: 20vh;
+    padding: 20px;
+  }
+</style>
