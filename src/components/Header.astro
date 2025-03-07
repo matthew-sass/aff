@@ -4,29 +4,42 @@ import logo from '../logo.png'
 ---
 
 <header>
-    <div class="navbar">
+    <!-- Mobile Header -->
+    <div class="mobile">
         <a href="/">
             <Image src={logo} alt="Logo" height={50} class="logo"/>
         </a>
 
         <div class="demo">
             <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="toggleMenu()">
-                <path
-                      class="line top"
+                <path class="line top"
                       d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
-                <path
-                      class="line middle"
+                <path class="line middle"
                       d="m 30,50 h 40" />
-                <path
-                      class="line bottom"
+                <path class="line bottom"
                       d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
             </svg>
         </div>
     </div>
 
-    <!-- Overlay -->
+    <!-- Desktop Header -->
+    <div class="desktop">
+        <div class="container">
+            <a href="/">
+                <Image src={logo} alt="Logo" height={50} class="logo"/>
+            </a>
+    
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Overlay Menu for Mobile -->
     <div id="overlay" class="overlay">
-        
         <nav class="overlay-nav">
             <h1>All Femme Fronted</h1>
             <ul>
@@ -35,29 +48,82 @@ import logo from '../logo.png'
                 <li><a href="/gallery">Gallery</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
-            <img src="src/affflowersfooter.png" alt="Flowers" class="image">
         </nav>
     </div>
 </header>
 
 <style>
 
-.navbar {
+.mobile {
+    display: none;
+}
+
+@media (max-width: 1020px) {
+    .mobile {
+        outline: 1px solid #efeeee;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #34312f;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    header .desktop {
+        display: none;
+    }
+
+}
+
+@media (min-width: 1020px ) {
+    header .overlay {
+        display: none;
+    }
+}
+
+.desktop li {
+    display: inline-block;
+    padding-right: 15epx;
+}
+
+.desktop a {
+    text-decoration: none;
+    color: #efeeee;
+    transition: 0.3s ease-in-out;
+    position: relative;
+}
+
+.desktop {
     background-color: #34312f;
+    outline: 1px solid #efeeee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.desktop .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed; /* Fixes the navbar at the top */
-    top: 0; /* Ensures it's at the very top of the page */
-    left: 0;
-    width: 100%; /* Makes sure the navbar spans the entire width of the page */
-    z-index: 1000; /* Ensures it's on top of other elements */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+.desktop li {
+    padding: 10px;
+}
 
 .logo {
     border-radius: 50px;
-    padding: 10px;
+    padding: 15px;
     transition: transform 0.3s ease;
 }
 
@@ -70,45 +136,36 @@ import logo from '../logo.png'
 }
 
 .ham {
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 400ms;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    cursor: pointer;
+    transition: transform 400ms;
 }
 
 .hamRotate.active {
-  transform: rotate(45deg);
-}
-
-.hamRotate180.active {
-  transform: rotate(180deg);
+    transform: rotate(45deg);
 }
 
 .line {
-  fill:none;
-  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-  stroke:#efeeee;
-  stroke-width:5.5;
-  stroke-linecap:round;
+    fill: none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: #efeeee;
+    stroke-width: 5.5;
+    stroke-linecap: round;
 }
 
 .ham1 .top {
-  stroke-dasharray: 40 139;
+    stroke-dasharray: 40 139;
 }
 
 .ham1 .bottom {
-  stroke-dasharray: 40 180;
+    stroke-dasharray: 40 180;
 }
 
 .ham1.active .top {
-  stroke-dashoffset: -98px;
+    stroke-dashoffset: -98px;
 }
 
 .ham1.active .bottom {
-  stroke-dashoffset: -138px;
+    stroke-dashoffset: -138px;
 }
 
 .overlay {
@@ -122,14 +179,14 @@ import logo from '../logo.png'
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: 0.1s ease-out;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     visibility: hidden;
 }
 
 .overlay-nav {
     text-align: center;
-    overflow: hidden;
-    margin-top: -15vh;
+    position: absolute;
+    top: 20%;
 }
 
 .overlay-nav ul {
@@ -143,7 +200,6 @@ import logo from '../logo.png'
 }
 
 .overlay-nav li {
-    margin 0 0;
     padding-bottom: 2vh;
 }
 
@@ -151,10 +207,6 @@ import logo from '../logo.png'
     color: white;
     font-size: 1rem;
     text-decoration: none;
-}
-
-.overlay-nav a:hover {
-    color: orange;
 }
 
 .overlay-nav img {
@@ -166,12 +218,7 @@ import logo from '../logo.png'
     max-height: 30vh;
 }
 
-.overlay-nav h2 {
-    margin-bottom: 20px;
-}
-
 .overlay.active {
-    display: flex;
     opacity: 1;
     visibility: visible;
 }

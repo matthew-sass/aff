@@ -4,12 +4,39 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout pageTitle={frontmatter.title}>
-  <div class="content">
-    <h1>{frontmatter.title}</h1>
-    <img src={frontmatter.heroImage} width="300" alt="" />
-    <slot />
+  <div class="container">
+    <div class="content">
+      <h1>{frontmatter.title}</h1>
+      <img src={frontmatter.heroImage} width="300" alt="" />
+      <div class="text">
+        <slot />
+      </div>
+    </div>
   </div>
 </Layout>
 
 <style>
+  h1, img {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center; 
+  }
+
+  .content {
+    max-width: 85%;
+    width: 100%;
+    text-align: center; 
+  }
+
+  .text {
+    text-align: left;  
+    max-width: 700px;  
+    margin: 0 auto;  
+  }
 </style>

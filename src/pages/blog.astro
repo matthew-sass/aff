@@ -7,14 +7,14 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
     <div class="list-container">
         <ul>
             {posts.map((post: any) => (
-                <div class="zoom">
+                <div class="posts">
                     <li>
                         <a href={`${post.url}`}>
+                            <img width={300} height={300} src={post.frontmatter.heroImage} alt="" />
                             <div class="text-content">
                                 <h2 class="title">{post.frontmatter.title}</h4>
                                 <h5 class="subtitle">{post.frontmatter.subtitle}</h6>
                             </div>
-                            <img width={300} height={300} src={post.frontmatter.heroImage} alt="" />
                         </a>
                     </li>
                 </div>
@@ -25,8 +25,28 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
 
 <style>
 
+    .list-container {
+        border: 1px solid #efeeee;
+        max-width: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .posts {
+        text-align: center;
+        align-items: center;
+    }
+
     ul {
         list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: #efeeee;
     }
 
 </style>
