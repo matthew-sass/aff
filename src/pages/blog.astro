@@ -1,52 +1,101 @@
 ---
-import Layout from "../layouts/Layout.astro"
-const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true}));
+import Layout from "../layouts/Layout.astro";
+const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true }));
 ---
 
 <Layout>
     <div class="list-container">
-        <ul>
+        <ul class="post-grid">
             {posts.map((post: any) => (
-                <div class="posts">
-                    <li>
-                        <a href={`${post.url}`}>
-                            <img width={300} height={300} src={post.frontmatter.heroImage} alt="" />
-                            <div class="text-content">
-                                <h2 class="title">{post.frontmatter.title}</h4>
-                                <h5 class="subtitle">{post.frontmatter.subtitle}</h6>
-                            </div>
-                        </a>
-                    </li>
-                </div>
+                <li class="post">
+                    <a href={`${post.url}`}>
+                        <img src={post.frontmatter.heroImage} alt="" />
+                        <div class="text-content">
+                            <h2 class="title">{post.frontmatter.title}</h2>
+                            <h5 class="subtitle">{post.frontmatter.subtitle}</h5>
+                        </div>
+                    </a>
+                </li>
             ))}
         </ul>
     </div>
 </Layout>
 
 <style>
-
+    /* Centering and Styling the Main Container */
     .list-container {
-        border: 1px solid #efeeee;
-        max-width: 700px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin: 0;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
     }
 
-    .posts {
-        text-align: center;
-        align-items: center;
+    /* Responsive Grid Layout */
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 0;
     }
 
-    ul {
+    /* Individual Post Card */
+    .post {
         list-style: none;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        text-align: center;
     }
 
+    .post:hover {
+        transform: scale(1.05);
+    }
+
+    /* Image Styling */
+    .post img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    /* Text Content */
+    .text-content {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.2rem;
+        margin: 5px 0;
+        color: #333;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        color: #666;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Remove default link styles */
     a {
         text-decoration: none;
-        color: #efeeee;
+        color: inherit;
     }
 
+    /* Responsive Design for Different Screen Sizes */
+    @media (max-width: 768px) {
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .post-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>

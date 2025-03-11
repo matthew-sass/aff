@@ -30,4 +30,21 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
     ul {
         list-style: none;
     }
+
+    .list-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 0;
+    }
+
+    .post {
+        
+    }
 </style>
