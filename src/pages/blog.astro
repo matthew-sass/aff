@@ -22,14 +22,12 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
 </Layout>
 
 <style>
-    /* Centering and Styling the Main Container */
     .list-container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 20px;
     }
 
-    /* Responsive Grid Layout */
     .post-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -37,10 +35,9 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         padding: 0;
     }
 
-    /* Individual Post Card */
     .post {
         list-style: none;
-        background: #fff;
+        background: #393737;
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -52,14 +49,12 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         transform: scale(1.05);
     }
 
-    /* Image Styling */
     .post img {
         width: 100%;
         height: 200px;
         object-fit: cover;
     }
 
-    /* Text Content */
     .text-content {
         padding: 10px;
     }
@@ -67,12 +62,12 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
     .title {
         font-size: 1.2rem;
         margin: 5px 0;
-        color: #333;
+        color: #efeeee;
     }
 
     .subtitle {
         font-size: 1rem;
-        color: #666;
+        color: #efeeee;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
@@ -80,13 +75,11 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         text-overflow: ellipsis;
     }
 
-    /* Remove default link styles */
     a {
         text-decoration: none;
         color: inherit;
     }
 
-    /* Responsive Design for Different Screen Sizes */
     @media (max-width: 768px) {
         .post-grid {
             grid-template-columns: repeat(2, 1fr);

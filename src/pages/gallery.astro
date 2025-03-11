@@ -3,34 +3,27 @@ import Layout from "../layouts/Layout.astro";
 const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager: true}));
 ---
 <Layout>
-    <ul>
-        {
-            thumbnails.map((post: any) => (
-                <li>
-                    <div class="image-container">
-                        <a href={post.url}>
-                            <img width={360} height={360} src={post.frontmatter.thumbnail} alt="" />
-                        </a>
-                        <div class="title-bar">
-                            <h4 class="title">{post.frontmatter.title}</h4>
+    <div class="list-container">
+        <ul>
+            {
+                thumbnails.map((post: any) => (
+                    <li>
+                        <div class="image-container">
+                            <a href={post.url}>
+                                <img width={360} height={360} src={post.frontmatter.thumbnail} alt="" />
+                            </a>
+                            <div class="title-bar">
+                                <h4 class="title">{post.frontmatter.title}</h4>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            ))
-        }
-    </ul>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
 </Layout>
 
 <style>
-    img {
-        margin: auto;
-        max-width: 80vw;
-        max-height: 40vh;
-    }
-    ul {
-        list-style: none;
-    }
-
     .list-container {
         max-width: 1000px;
         margin: 0 auto;
@@ -39,12 +32,12 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
 
     .post-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
         padding: 0;
     }
 
-    .post {
-        
-    }
+    
+
+
 </style>
