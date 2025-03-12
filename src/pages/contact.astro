@@ -2,5 +2,67 @@
 import Layout from "../layouts/Layout.astro";
 ---
 <Layout>
-    <h2>Contact</h2>
+    <div class="container">
+        <p>Contact</p>
+        <form method="POST" action="https://formsubmit.co/matthew.sass35@gmail.com">
+            <input type="email" name="email" placeholder="Your email...">
+            <textarea name="message" placeholder="Your text..."></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
 </Layout>
+
+<style>
+    .container {
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 20px;
+      background: #393737;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    p {
+      text-align: left;
+      font-size: 1.5rem;
+      color: #efeeee;
+      margin-top: 0;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    input {
+      padding: 10px;
+      resize: vertical;
+    }
+
+    textarea {
+      padding: 10px;
+      height: 150px;
+      resize: none;
+    }
+  
+    input:focus {
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+  
+    button {
+      background: #34312f;
+      color: #efeeee;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+  
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+  

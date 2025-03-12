@@ -12,7 +12,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
                         <img src={post.frontmatter.heroImage} alt="" />
                         <div class="text-content">
                             <h2 class="title">{post.frontmatter.title}</h2>
-                            <h5 class="subtitle">{post.frontmatter.subtitle}</h5>
+                            <p class="subtitle">{post.frontmatter.subtitle}</p>
                         </div>
                     </a>
                 </li>
@@ -25,7 +25,6 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
     .list-container {
         max-width: 1000px;
         margin: 0 auto;
-        padding: 20px;
     }
 
     .post-grid {
