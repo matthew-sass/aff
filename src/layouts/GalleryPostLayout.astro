@@ -9,9 +9,11 @@ console.log(frontmatter)
 
   <div class="content">
     <h2>{frontmatter.title}</h2>
-    <div class="gallery">
+    <div class="post-grid">
       {frontmatter.images.map((image) => (
-        <img src={image} alt="Gallery image" loading="lazy" />
+        <div class="post">
+          <img src={image} alt="Gallery image" loading="lazy" />
+        </div>
       ))}
     </div>
   </div>
@@ -20,7 +22,143 @@ console.log(frontmatter)
 
 <style>
   .content {
-    margin-top: 20vh;
-    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
   }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0;
+    justify-items: center;
+  }
+
+  .post {
+    width: 300px;
+    background: #393737;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .post:hover {
+    transform: scale(1.05);
+  }
+
+  .post img {
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+  }
+
+  @media (max-width: 800px) {
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 700px) {
+
+        .post-grid {
+            gap: 10px;
+        }
+
+        .post {
+            list-style: none;
+            overflow: hidden;
+            width: 250px;
+            margin-bottom: 5vh;
+            padding: 5px;
+        }
+
+        .post img {
+            width: 100%;
+            object-fit: cover;
+            height: 250px;
+        }
+
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+
+        .post-grid {
+            gap: 10px;
+        }
+
+        .post {
+            list-style: none;
+            overflow: hidden;
+            width: 225px;
+            margin-bottom: 5vh;
+            padding: 5px;
+        }
+
+        .post img {
+            width: 100%;
+            object-fit: cover;
+            height: 225px;
+        }
+
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 540px) {
+
+        .post-grid {
+            gap: 10px;
+        }
+
+        .post {
+            list-style: none;
+            overflow: hidden;
+            width: 180px;
+            margin-bottom: 5vh;
+            padding: 5px;
+        }
+
+        .post img {
+            width: 100%;
+            object-fit: cover;
+            height: 180px;
+        }
+
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 440px) {
+
+        .post-grid {
+            gap: 10px;
+        }
+
+        .post {
+            list-style: none;
+            overflow: hidden;
+            width: 150px;
+            margin-bottom: 5vh;
+            padding: 5px;
+        }
+
+        .post img {
+            width: 100%;
+            object-fit: cover;
+            height: 150px;
+        }
+
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 </style>

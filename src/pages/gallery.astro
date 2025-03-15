@@ -189,5 +189,25 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
         }
     }
 
+    @media (max-width: 360px) {
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .post {
+            list-style: none;
+            overflow: hidden;
+            width: 125px;
+            padding: 5px;
+            margin: 0 auto;
+        }
+
+        .post img {
+            width: 100%;
+            object-fit: cover;
+            height: 125px;
+        }
+    }
+
     
 </style>
