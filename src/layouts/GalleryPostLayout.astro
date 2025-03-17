@@ -1,18 +1,22 @@
 ---
 import Layout from "./Layout.astro";
 import Header from "../components/Header.astro";
+import { ClientRouter } from "astro:transitions";
 
 const { frontmatter } = Astro.props;
-console.log(frontmatter)
 ---
 <Layout>
 
-  <div class="content">
+  <ClientRouter/>
+
+  <div class="list-container">
     <h2>{frontmatter.title}</h2>
     <div class="post-grid">
       {frontmatter.images.map((image) => (
         <div class="post">
-          <img src={image} alt="Gallery image" loading="lazy" />
+          <a href={image} >
+            <img src={image} alt="Gallery image" loading="lazy" />
+          </a>
         </div>
       ))}
     </div>
@@ -20,145 +24,67 @@ console.log(frontmatter)
     
 </Layout>
 
+
 <style>
-  .content {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .post-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 0;
-    justify-items: center;
-  }
-
-  .post {
-    width: 300px;
-    background: #393737;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 5px;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .post:hover {
-    transform: scale(1.05);
-  }
-
-  .post img {
-    width: 100%;
-    object-fit: cover;
-    height: 300px;
-  }
-
-  @media (max-width: 800px) {
-        .post-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    .list-container {
+        max-width: 1000px;
+        margin: 0 auto;
     }
 
-    @media (max-width: 700px) {
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 10px;
+    }
 
+    .post {
+        list-style: none;
+        overflow: hidden;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .post:hover {
+        transform: scale(1.05);
+    }
+
+    .post img {
+        width: 100%;
+        object-fit: cover;
+        height: 225px;
+        display: block;
+    }
+
+    @media (max-width: 600px) {
         .post-grid {
-            gap: 10px;
-        }
-
-        .post {
-            list-style: none;
-            overflow: hidden;
-            width: 250px;
-            margin-bottom: 5vh;
-            padding: 5px;
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .post img {
-            width: 100%;
-            object-fit: cover;
-            height: 250px;
+            height: 175px;
         }
 
-        .post-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
     }
 
-    @media (max-width: 640px) {
+    @media (min-width: 700px) {
+    .post-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
+
+    @media (max-width: 360px) {
         .post-grid {
-            gap: 10px;
-        }
-
-        .post {
-            list-style: none;
-            overflow: hidden;
-            width: 225px;
-            margin-bottom: 5vh;
-            padding: 5px;
+            grid-template-columns: 1fr;
         }
 
         .post img {
-            width: 100%;
-            object-fit: cover;
-            height: 225px;
+            height: 200px;
         }
 
-        .post-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
     }
 
-    @media (max-width: 540px) {
-
-        .post-grid {
-            gap: 10px;
-        }
-
-        .post {
-            list-style: none;
-            overflow: hidden;
-            width: 180px;
-            margin-bottom: 5vh;
-            padding: 5px;
-        }
-
-        .post img {
-            width: 100%;
-            object-fit: cover;
-            height: 180px;
-        }
-
-        .post-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 440px) {
-
-        .post-grid {
-            gap: 10px;
-        }
-
-        .post {
-            list-style: none;
-            overflow: hidden;
-            width: 150px;
-            margin-bottom: 5vh;
-            padding: 5px;
-        }
-
-        .post img {
-            width: 100%;
-            object-fit: cover;
-            height: 150px;
-        }
-
-        .post-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
+    
+    
 </style>
