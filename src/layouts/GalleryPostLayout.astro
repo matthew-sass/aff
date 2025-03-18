@@ -1,11 +1,9 @@
 ---
 import Layout from "./Layout.astro";
+import '../styles/lightbox.css'
 const { frontmatter } = Astro.props;
-import 'lightbox2/dist/js/lightbox-plus-jquery.js'
+console.log(frontmatter)
 ---
-<head>
-    <link href="/home/matt/dev/aff/node_modules/lightbox2/src/css/lightbox.css" rel="stylesheet" />
-</head>
 
 <Layout>
 
@@ -13,9 +11,9 @@ import 'lightbox2/dist/js/lightbox-plus-jquery.js'
   <div class="list-container">
     <h2>{frontmatter.title}</h2>
     <div class="post-grid">
-      {frontmatter.images.map((image) => (
+      {frontmatter.images.map(({image, caption}) => (
         <div class="post">
-          <a href={image} data-lightbox='gallery' data-title="test">
+          <a href={image} data-lightbox="gallery-post" data-title={caption}>
             <img src={image} alt="Gallery image" loading="lazy" />
           </a>
         </div>
@@ -27,8 +25,17 @@ import 'lightbox2/dist/js/lightbox-plus-jquery.js'
   
 </Layout>
 
+<script is:inline src="/js/lightbox-plus-jquery.js"></script>
 
+<script is:inline>
+import lightboxPlusJquery from "../js/lightbox-plus-jquery";
 
+    lightboxPlusJquery.option({
+        'resizeDuration': 200,
+        'wrapAround': 200,
+        'positionFromTop': 20
+    })
+</script>
 
 <style>
     .list-container {
