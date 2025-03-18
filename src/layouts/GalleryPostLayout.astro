@@ -1,20 +1,18 @@
 ---
 import Layout from "./Layout.astro";
-import Header from "../components/Header.astro";
-import { ClientRouter } from "astro:transitions";
-
+import '../styles/lightbox.css'
 const { frontmatter } = Astro.props;
 ---
+
 <Layout>
 
-  <ClientRouter/>
 
   <div class="list-container">
     <h2>{frontmatter.title}</h2>
     <div class="post-grid">
       {frontmatter.images.map((image) => (
         <div class="post">
-          <a href={image} >
+          <a href={image} data-lightbox="gallery-post">
             <img src={image} alt="Gallery image" loading="lazy" />
           </a>
         </div>
@@ -24,6 +22,17 @@ const { frontmatter } = Astro.props;
     
 </Layout>
 
+<script is:inline src="/js/lightbox-plus-jquery.js"></script>
+
+<script is:inline>
+import lightboxPlusJquery from "../js/lightbox-plus-jquery";
+
+    lightboxPlusJquery.option({
+        'resizeDuration': 200,
+        'wrapAround': 200,
+        'positionFromTop': 20
+    })
+</script>
 
 <style>
     .list-container {
