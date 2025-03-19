@@ -20,6 +20,16 @@ collections:
       - { label: "Thumbnail (450 x 700)", name: "heroImage", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  - name: "resources"
+    label: "Resources"
+    folder: "src/pages/resources"
+    create: true
+    fields: 
+      - { label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/ResourcesPostLayout.astro" }
+      - { label: "Title", name: "title", widget: "string"}
+      - { label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - { label: "File", name: "file", widget: "file"}
+
   - name: "gallery"
     label: "Gallery"
     folder: "src/pages/gallery"
