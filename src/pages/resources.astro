@@ -8,10 +8,10 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
         <ul class="post-grid">
             {posts.map((post: any) => (
                 <li class="post">
-                    <a href={`${post.url}`} download={`${post.title}`}>
-                        <img src={post.frontmatter.thumbnail} alt="" />
+                    <a href={`${post.frontmatter.file}`} download={`${post.frontmatter.title}`}>
+                        <img src={post.frontmatter.thumbnail} alt="" width="170" height="220" />
                         <div class="text-content">
-                            <h2 class="title">{post.frontmatter.title}</h2>
+                            <h4 class="title">{post.frontmatter.title}</h4>
                         </div>
                     </a>
                 </li>
@@ -20,4 +20,30 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
     </div>
 
 </Layout>
+
+<style>
+
+    .list-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .post {
+        list-style: none;
+    }
+
+    .post h4 {
+        color: #efeeee;
+    }
+
+    .post a {
+        text-decoration: none;
+    }
+</style>
 
