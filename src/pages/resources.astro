@@ -1,8 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: true}));
 ---
 <Layout>
-    <!-- <embed src="../public/uploads/dummy.pdf" width="200" height="200" type="application/pdf"> -->
-    
+   
+    <div class="list-container">
+        <ul class="post-grid">
+            {posts.map((post: any) => (
+                <li class="post">
+                    <a href={`${post.url}`} download={`${post.title}`}>
+                        <img src={post.frontmatter.thumbnail} alt="" />
+                        <div class="text-content">
+                            <h2 class="title">{post.frontmatter.title}</h2>
+                        </div>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+
 </Layout>
 
