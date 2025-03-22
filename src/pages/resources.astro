@@ -8,6 +8,7 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
         <ul class="post-grid">
             {posts.map((post: any) => (
                 <li class="post">
+                    {/* <a href={`${post.frontmatter.file}`} download={`${post.frontmatter.title}`}></a> */}
                     <a href={`${post.frontmatter.file}`} download={`${post.frontmatter.title}`}>
                         <img src={post.frontmatter.thumbnail} alt="" width="170" height="220" />
                         <div class="text-content">
