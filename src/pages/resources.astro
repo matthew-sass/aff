@@ -3,48 +3,72 @@ import Layout from "../layouts/Layout.astro";
 const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: true}));
 ---
 <Layout>
-   
     <div class="list-container">
         <ul class="post-grid">
             {posts.map((post: any) => (
                 <li class="post">
-                    {/* <a href={`${post.frontmatter.file}`} download={`${post.frontmatter.title}`}></a> */}
-                    <a href={`${post.frontmatter.file}`} download={`${post.frontmatter.title}`}>
-                        <img src={post.frontmatter.thumbnail} alt="" width="170" height="220" />
-                        <div class="text-content">
-                            <h4 class="title">{post.frontmatter.title}</h4>
+                        <div class="thumbnail-wrapper">
+                            <img src={post.frontmatter.thumbnail} alt="" width="" height="" />
+                            <div class="overlay-pdf">
+                                <div class="text-content">
+                                    <h4 class="title">{post.frontmatter.title}</h4>
+                                </div>
+                                <a href={`${post.frontmatter.file}`} class="view-btn">View</a>
+                                <a href={`${post.frontmatter.file}`} download class="download-btn">Download</a>
+                            </div>
                         </div>
+                        
                     </a>
                 </li>
             ))}
         </ul>
     </div>
-
 </Layout>
 
 <style>
-
     .list-container {
         max-width: 1000px;
         margin: 0 auto;
-        padding: 10px;
+        padding: 30px;
     }
 
     .post-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 20px;
+        padding: 0;
     }
 
     .post {
         list-style: none;
+        outline: 1px solid #efeeee;
+        padding: 10px;
+        max-width: 240px;
     }
 
     .post h4 {
         color: #efeeee;
+        margin-top: 0;
     }
 
     .post a {
         text-decoration: none;
     }
+
+    .thumbnail-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 170px;
+        height: 220px;
+    }
+
+    .thumbnail-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    
 </style>
+
 
