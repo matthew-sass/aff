@@ -41,27 +41,31 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
         display: grid;
         grid-auto-rows: auto;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 1em;
+        gap: 0.3em;
         justify-content: center;
     }
 
     .post {
         list-style: none;
         overflow: hidden;
-        transition: transform ease-in-out 0.3s;
+        transition: transform ease-in-out 1.0s;
     }
 
     .post:hover {
-        transform: scale(1.03);
+        opacity: 0.7;
     }
 
     .post img {
         width: 100%;
         height: auto;
         max-width: auto;
-        max-height: 250px;
+        max-height: 300px;
         object-fit: cover;
         outline: 1px solid;
+    }
+
+    a {
+        color: #34312f;
     }
 
     
