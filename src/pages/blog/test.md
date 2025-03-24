@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/MarkdownPostLayout.astro"
 title: "Test"
-subtitle: Sample subtitle for a blog post
+subtitle: Sample subtitle for a blog post Sample subtitle for a blog post Sample subtitle for a blog post Sample subtitle for a blog post Sample subtitle for a blog post Sample subtitle for a blog post 
 date: "2025-02-04T17:46:00.000Z"
 heroImage: "/uploads/logo.png"
 ---

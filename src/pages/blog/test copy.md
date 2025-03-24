@@ -1,9 +1,9 @@
 ---
-title: Another test
-subtitle: Sample subtitle for a blog post Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dui eleifend, sodales eros id, mattis orci. Quisque sem odio, elementum sit amet lacus id, dictum accumsan nunc. Duis a facilisis nibh, eget cursus est. Proin mollis tristique sapien, sed posuere sem semper eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ut tincidunt ipsum. Cras id velit ut sem efficitur vestibulum. Fusce eu neque eros. Vestibulum in erat non sapien condimentum dictum non sit amet diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec sem nec nunc molestie tincidunt ullamcorper eget lectus. In ut ipsum ut ipsum pretium suscipit. Donec malesuada cursus enim. Sed euismod arcu in justo accumsan iaculis. Sample subtitle for a blog post Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dui eleifend, sodales eros id, mattis orci. Quisque sem odio, elementum sit amet lacus id, dictum accumsan nunc. Duis a facilisis nibh, eget cursus est. Proin mollis tristique sapien, sed posuere sem semper eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ut tincidunt ipsum. Cras id velit ut sem efficitur vestibulum. Fusce eu neque eros. Vestibulum in erat non sapien condimentum dictum non sit amet diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec sem nec nunc molestie tincidunt ullamcorper eget lectus. In ut ipsum ut ipsum pretium suscipit. Donec malesuada cursus enim. Sed euismod arcu in justo accumsan iaculis. 
-date: 2025-02-07T15:16:00.000Z
+layout: "../../layouts/MarkdownPostLayout.astro"
+title: "Test"
+subtitle: Sample subtitle for a blog post
+date: "2025-02-04T17:46:00.000Z"
 heroImage: "/uploads/logo.png"
-layout: ../../layouts/MarkdownPostLayout.astro
 ---
 Lorem markdownum Aries, *sumpsisse orbis*: laniaverat causa. Scyrum conspicit
 procerum, tum si in, tigride hinc veneni imbrem captaeque coercuit e Paeonas
