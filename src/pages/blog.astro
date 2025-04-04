@@ -10,7 +10,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
             {posts.map((post: any) => (
                 <li class="post">
                     <a href={`${post.url}`}>
-                        <Image src={post.frontmatter.heroImage} alt={post.frontmatter.title} width="582" height="727"></Image>
+                        <img src={post.frontmatter.heroImage} alt={post.frontmatter.title}/>
                         <div class="text-content">
                             <h2 class="title">{post.frontmatter.title}</h2>
                             <p class="subtitle">{post.frontmatter.subtitle}</p>
