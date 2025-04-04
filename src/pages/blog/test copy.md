@@ -3,7 +3,7 @@ layout: "../../layouts/MarkdownPostLayout.astro"
 title: "Test"
 subtitle: Sample subtitle for a blog post
 date: "2025-02-04T17:46:00.000Z"
-heroImage: "/uploads/webptest.webp"
+heroImage: "/uploads/igpost1.webp"
 ---
 Lorem markdownum Aries, *sumpsisse orbis*: laniaverat causa. Scyrum conspicit
 procerum, tum si in, tigride hinc veneni imbrem captaeque coercuit e Paeonas
