@@ -17,6 +17,10 @@ body {
     padding: 0;
 }
 
+a {
+    color: #efeeee;
+}
+
 .hidden {
     display: none;
 }
