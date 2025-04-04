@@ -21,6 +21,10 @@ a {
     color: #efeeee;
 }
 
+p {
+    font-size: 1rem;
+}
+
 .hidden {
     display: none;
 }

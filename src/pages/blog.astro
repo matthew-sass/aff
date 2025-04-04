@@ -9,15 +9,16 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
             {posts.map((post: any) => (
                 <li class="post">
                     <a href={`${post.url}`}>
-                        <img src={post.frontmatter.heroImage} alt={post.frontmatter.title}/>
+                        <img src={post.frontmatter.heroImage} alt={post.frontmatter.title} loading="lazy"/>
                         <div class="text-content">
                             <h2 class="title">{post.frontmatter.title}</h2>
                             <p class="subtitle">{post.frontmatter.subtitle}</p>
                         </div>
+                        <div class="button-container">
+                            <button><span>→</span></button>
+                        </div>
                     </a>
-                    <div class="button-container">
-                        <button><span>→</span></button>
-                    </div>
+                    
                 </li>
             ))}
         </ul>
@@ -52,6 +53,9 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         list-style: none;
         overflow: hidden;
         padding: 5px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
     }
 
     .post a {
@@ -82,6 +86,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         transition: all 0.3s ease;
         cursor: pointer;
         position: relative;
+        z-index: 1;
     }
 
     button span {
@@ -118,7 +123,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         margin: 0;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
+        -webkit-line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
     }
