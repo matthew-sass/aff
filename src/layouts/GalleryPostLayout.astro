@@ -7,10 +7,9 @@ console.log(frontmatter)
 
 <Layout>
 
-  
-<h2>{frontmatter.title}</h2>
+<h3>{frontmatter.title}</h3>
   <div class="list-container">
-    <div class="post-grid">
+    <div class="masonry-grid">
       {frontmatter.images.map(({image, caption}) => (
         <div class="post">
           <a href={image} data-lightbox="gallery-post" data-title={caption}>
@@ -38,52 +37,66 @@ import lightboxPlusJquery from "../js/lightbox-plus-jquery";
 
 <style>
 
-    * {
-        box-sizing: border-box;
-    }
 
-    h2 {
-        text-align: center;
-        margin-top: 100px;
-    }
+.list-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-    .list-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%; 
-    }
+.masonry-grid {
+    column-count: 4;
+    column-gap: 1em;
+    max-width: 100%;
+    margin: 1vh 2vw;
+}
 
-    .post-grid {
-        max-width: 1200px;
-        margin: 2.5vh auto;
-        padding: 0 20px;
-        width: 100%;
-        display: grid;
-        grid-auto-rows: auto;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 1em;
-        justify-content: center;
+.post {
+    display: inline-block;
+    break-inside: avoid;
+    position: relative;
+    margin-bottom: 1em;
+    transition: transform ease-in-out 1.0s;
+}
+
+.post img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+.post:hover img {
+    opacity: 0.4;
+}
+
+a {
+    color: #34312f;
+}
+
+@media (max-width: 1020px) {
+    .masonry-grid {
+        margin: 0.75vh 3vw;
+        column-count: 3;
+        column-gap: 0.75em;
     }
 
     .post {
-        list-style: none;
-        overflow: hidden;
-        transition: transform ease-in-out 0.3s;
+        margin-bottom: 0.75em;
+    }
+}
+
+@media (max-width: 768px) {
+    .masonry-grid {
+        margin: 0.5vh 3vw;
+        column-count: 2;
+        column-gap: 0.75em;
     }
 
-    .post:hover {
-        transform: scale(1.03);
+    .post {
+        margin-bottom: 0.75em;
     }
-
-    .post img {
-        width: 100%;
-        height: auto;
-        max-width: auto;
-        max-height: 250px;
-        object-fit: cover;
-        outline: 1px solid;
-    }
+}
 
     
     

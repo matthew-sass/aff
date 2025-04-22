@@ -16,12 +16,6 @@ const { frontmatter } = Astro.props;
 </Layout>
 
 <style>
-  h1 {
-    padding-top: 10px;
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-  }
 
   img {
     max-width: 700px;
@@ -33,12 +27,12 @@ const { frontmatter } = Astro.props;
   .container {
     display: flex;
     justify-content: center;
-    
   }
 
   .content {
     width: 100%;
-    padding: 10px;
+    max-width: 700px;
+    padding: 1em;
   }
 
   .content img {
