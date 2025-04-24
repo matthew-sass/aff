@@ -7,7 +7,9 @@ import Layout from "../layouts/Layout.astro";
         <form method="POST" action="https://formsubmit.co/matthew.sass35@gmail.com">
             <input type="email" name="email" placeholder="Your email...">
             <textarea name="message" placeholder="Your text..."></textarea>
-            <button type="submit">Send</button>
+            <div class="btn-wrapper">
+              <button type="submit" class="border-flip border-flip--black btn">Send</button>
+            </div>
         </form>
     </div>
 </Layout>
@@ -17,16 +19,14 @@ import Layout from "../layouts/Layout.astro";
       max-width: 800px;
       margin: 100px auto;
       padding: 20px;
-      background: #393737;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
   
     p {
       text-align: left;
       font-size: 1.5rem;
       color: #efeeee;
-      margin-top: 0;
+      margin: 0;
+      padding-bottom: 5px;
     }
   
     form {
@@ -49,20 +49,53 @@ import Layout from "../layouts/Layout.astro";
     input:focus {
       box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
     }
+
+    .btn-wrapper {
+      display: flex;
+      justify-content: center;
+    }
   
-    button {
-      background: #34312f;
-      color: #efeeee;
-      border: none;
+    .border-flip {
+      display: inline-block;
       padding: 10px;
+      width: 100px;
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: none;
+      border: medium;
+    } 
+    
+    .border-flip::before {
+      content: "";
+      position: absolute;
+      inset: 0px;
+      transform: perspective(350px) rotateX(0deg);
+      transition: 0.35s;
+    } 
+    
+    .border-flip:hover::before {
+      transition: 0.35s;
+      transform: perspective(350px) rotateX(-180deg);
+    } 
+    
+    .border-flip--black {
+      color: #efeeee
+    } 
+    
+    .border-flip--black::before {
+      border: 1px solid #efeeee;
       border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+    } 
+    
+    .btn {
+      text-transform: none;
+    } 
+    
+    .btn:hover .btn-slide-show-text1 {
+      margin-left: 65px;
+    } 
   
-    button:hover {
-      background: #0056b3;
-    }
   </style>
   

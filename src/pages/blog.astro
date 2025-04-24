@@ -11,7 +11,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
                     <a href={`${post.url}`}>
                         <img src={post.frontmatter.heroImage} alt={post.frontmatter.title} loading="lazy"/>
                         <div class="text-content">
-                            <h2 class="title">{post.frontmatter.title}</h2>
+                            <h4 class="title">{post.frontmatter.title}</h4>
                             <p class="subtitle">{post.frontmatter.subtitle}</p>
                         </div>
                         <div class="button-container">
@@ -109,9 +109,10 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         color: #efeeee;
     }
 
-    .text-content h2 {
+    .text-content h4 {
         margin: 0;
         padding-top: 5px;
+        padding-bottom: 5px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
@@ -126,11 +127,20 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         -webkit-line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-size: 0.9em;
+    }
+
+    @media (max-width: 1920px) {
+        .post-grid {
+            grid-template-columns: repeat(3, 1fr); 
+            padding: 0 3vw;
+            gap: 1.5em;
+        }
     }
 
     @media (max-width: 1022px) {
         .post-grid {
-            grid-template-columns: repeat(3, 1fr); /* Switch to 3 columns */
+            grid-template-columns: repeat(3, 1fr); 
             padding: 0 3vw;
             gap: 1.2em;
         }
@@ -138,9 +148,17 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
 
     @media (max-width: 768px) {
         .post-grid {
-            grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns */
+            grid-template-columns: repeat(2, 1fr); 
             padding: 0 4vw;
             gap: 1.4em;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr); 
+            padding: 0 4vw;
+            gap: 0.5em;
         }
     }
 
