@@ -6,11 +6,16 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
     <div class="list-container">
         <div class="masonry-grid">
             {
-                thumbnails.map((post: any) => (
+                thumbnails.map((post: any, index: number) => (
                     <div class="post">
                         <div class="image-container">
                             <a href={post.url}>
-                                <img src={post.frontmatter.thumbnail} alt="" />
+                                <img 
+                                    src={post.frontmatter.thumbnail} 
+                                    alt="" 
+                                    class="slide-in" 
+                                    style={`animation-delay: ${index * 0.1}s`} 
+                                />
                             </a>
                         </div>
                     </div>
@@ -22,6 +27,25 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
 </Layout>
 
 <style>
+
+.slide-in {
+    opacity: 0;
+    transform: translateY(100px);
+    animation: slideIn 1s forwards;
+    animation-fill-mode: forwards;
+    pointer-events: auto;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 .list-container {
     display: flex;
@@ -69,6 +93,7 @@ a {
     .post {
         margin-bottom: 0.5em;
     }
+    
 }
 
 @media (max-width: 768px) {
@@ -84,3 +109,15 @@ a {
 }
     
 </style>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll(".slide-in");
+  
+      images.forEach((img) => {
+        img.addEventListener("animationend", () => {
+          img.classList.remove("slide-in");
+        });
+      });
+    });
+  </script>

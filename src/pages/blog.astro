@@ -56,6 +56,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         position: relative;
         display: flex;
         flex-direction: column;
+        font-size: 1.1em
     }
 
     .post a {
@@ -77,9 +78,11 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
 
     button {
         width: 40px;
+        height: 40px; 
         margin-top: 5px;
         background-color: #1d1b1a;
         border: none;
+        border-radius: 50%; 
         color: #efeeee;
         text-align: center;
         font-size: 1em;
@@ -87,17 +90,34 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
         cursor: pointer;
         position: relative;
         z-index: 1;
+        overflow: hidden; 
+    }
+
+    button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120%;
+        height: 120%;
+        background-color: rgba(239, 238, 238, 0.1); 
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .post:hover button::before {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
     }
 
     button span {
         display: inline-block;
         transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
     }
-
-    .post:hover button span {
-        transform: translateX(8px);
-    }
-
     
     .button-container {
         display: flex;
