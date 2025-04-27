@@ -8,19 +8,94 @@ import Layout from "../layouts/Layout.astro";
             <input type="email" name="email" placeholder="Your email...">
             <textarea name="message" placeholder="Your text..."></textarea>
             <div class="btn-wrapper">
-              <button type="submit" class="border-flip border-flip--black btn">Send</button>
+              <button type="submit" class="button">
+                <span class="back"></span>
+                Send
+              </button>
             </div>
         </form>
     </div>
 </Layout>
 
 <style>
-    .container {
-      max-width: 800px;
-      margin: 10vh auto;
-      padding: 20px;
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 200ms ease-out;
     }
-  
+
+
+    button {
+      appearance: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button {
+      isolation: isolate;
+      color: #efeeee;
+      font-size: 1em;
+      line-height: 1.5;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3px 18px;
+      border-radius: 9999rem;
+      background: transparent;
+      position: relative;
+      border: 1px solid #efeeee;
+      color: #efeeee;
+      font-size: 1em;
+    }
+
+    .button > .back {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: inherit;
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .button > .back::before {
+      content: "";
+      width: 0;
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(239, 238, 238, 0.1);
+      position: absolute;
+    }
+
+    .button:hover {
+      color: white;
+    }
+
+    .button:hover > .back {
+      transform: scale(100%);
+    }
+
+    .button:hover > .back::before {
+      width: 120%;
+    }
+
+    .button:active > .back {
+      transform: scale(90%);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20vh auto;
+      padding: 10px;
+    }
+
     p {
       text-align: left;
       font-size: 1.5rem;
@@ -28,13 +103,13 @@ import Layout from "../layouts/Layout.astro";
       margin: 0;
       padding-bottom: 5px;
     }
-  
+
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 5px;
     }
-  
+
     input {
       padding: 10px;
       resize: vertical;
@@ -45,57 +120,13 @@ import Layout from "../layouts/Layout.astro";
       height: 25vh;
       resize: none;
     }
-  
+
     input:focus {
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+      box-shadow: rgba(239, 238, 238, 0.1); 
     }
 
     .btn-wrapper {
       display: flex;
       justify-content: right;
     }
-  
-    .border-flip {
-      display: inline-block;
-      padding: 10px;
-      width: 100px;
-      position: relative;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 600;
-      background: none;
-      border: medium;
-    } 
-    
-    .border-flip::before {
-      content: "";
-      position: absolute;
-      inset: 0px;
-      transform: perspective(350px) rotateX(0deg);
-      transition: 0.35s;
-    } 
-    
-    .border-flip:hover::before {
-      transition: 0.35s;
-      transform: perspective(350px) rotateX(-180deg);
-    } 
-    
-    .border-flip--black {
-      color: #efeeee
-    } 
-    
-    .border-flip--black::before {
-      border: 1px solid #efeeee;
-      border-radius: 5px;
-    } 
-    
-    .btn {
-      text-transform: none;
-    } 
-    
-    .btn:hover .btn-slide-show-text1 {
-      margin-left: 65px;
-    } 
-  
-  </style>
-  
+</style>

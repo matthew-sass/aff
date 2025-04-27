@@ -30,7 +30,7 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
 
 .slide-in {
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(400px);
     animation: slideIn 1s forwards;
     animation-fill-mode: forwards;
     pointer-events: auto;
@@ -39,7 +39,7 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
 @keyframes slideIn {
     0% {
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateY(400px);
     }
     100% {
         opacity: 1;

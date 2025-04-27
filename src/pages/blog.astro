@@ -6,8 +6,8 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
 <Layout>
     <div class="list-container">
         <ul class="post-grid">
-            {posts.map((post: any) => (
-                <li class="post">
+            {posts.map((post: any, index: number) => (
+                <li class="post slide-in" style={`animation-delay: ${index * 0.1}s`}>
                     <a href={`${post.url}`}>
                         <img src={post.frontmatter.heroImage} alt={post.frontmatter.title} loading="lazy"/>
                         <div class="text-content">
@@ -29,6 +29,25 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
 
     * {
         box-sizing: border-box;
+    }
+
+    .slide-in {
+        opacity: 0;
+        transform: translateY(400px);
+        animation: slideIn 1s forwards;
+        animation-fill-mode: forwards;
+        pointer-events: auto;
+    }
+
+    @keyframes slideIn {
+        0% {
+            opacity: 0;
+            transform: translateY(400px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .list-container {

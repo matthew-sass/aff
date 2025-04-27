@@ -58,6 +58,15 @@ import logo from '../logo.png'
 
 <style>
 
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: top 0.3s;
+    color: transparent;
+}
+
 h1 {
     overflow: visible;
     word-wrap: break-word;
@@ -71,6 +80,7 @@ h1 {
 .mobile {
     display: none;
     height: 75px;
+    box;
 }
 
 @media (max-width: 1020px) {
@@ -247,8 +257,24 @@ h1 {
 </style>
 
 <script is:inline>
-function toggleMenu() {
-    document.querySelector('.ham').classList.toggle('active');
-    document.getElementById('overlay').classList.toggle('active');
-}
+    function toggleMenu() {
+        document.querySelector('.ham').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
+    }
+
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-80px"; // move header up (hide it)
+        } else {
+            // Scrolling up
+            header.style.top = "0"; // move header down (show it)
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // prevent negative
+    });
 </script>

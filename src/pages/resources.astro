@@ -101,51 +101,7 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
       justify-content: center;
     }
   
-    .border-flip {
-      display: inline-block;
-      padding: 10px;
-      width: 125px;
-      position: relative;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 600;
-      background: none;
-      border: medium;
-    } 
-    
-    .border-flip::before {
-      content: "";
-      position: absolute;
-      inset: 0px;
-      transform: perspective(350px) rotateX(0deg);
-      transition: 0.35s;
-    } 
-    
-    .border-flip:hover::before {
-      transition: 0.35s;
-      transform: perspective(350px) rotateX(-180deg);
-    } 
-    
-    .border-flip--black {
-      color: #efeeee
-    } 
-    
-    .border-flip--black::before {
-      border: 1px solid #efeeee;
-      border-radius: 5px;
-    } 
-    
-    .btn {
-      text-transform: none;
-    } 
-    
-    .btn:hover .btn-slide-show-text1 {
-      margin-left: 65px;
-    }
 
-    
-
-    
     
 </style>
 
