@@ -56,7 +56,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
 
     .recent-posts-container {
         margin-top: 25px;
-        font-size: 2vh
+        font-size: 1em;
     }
 
     .posts-header {
@@ -68,7 +68,6 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
 
     h1 {
         margin: 0;
-        font-weight: 50;
         font-size: 4rem;
         font-size: 4.5vh;
         font-family: 'Special Gothic Expanded One', sans-serif;
@@ -219,6 +218,21 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
             padding: 0 3vw;
             gap: 1.5em;
         }
+
+        .text-header {
+            max-width: 1200px;
+            margin-top: 5vh;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .posts-header {
+            display: flex;
+            width: 100%;
+            padding: 0 4vw;
+            margin-bottom: -20px;
+        }
+
     }
 
     @media (max-width: 1022px) {
@@ -227,6 +241,22 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
             padding: 0 3vw;
             gap: 1.2em;
         }
+
+        .text-header {
+            max-width: 1200px;
+            margin-top: 3vh;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .posts-header {
+            display: flex;
+            width: 100%;
+            padding: 0 3vw;
+            font-size: 0.8em;
+            margin-bottom: -20px;
+        }
+
     }
 
     @media (max-width: 768px) {
@@ -235,6 +265,21 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
             padding: 0 4vw;
             gap: 1.4em;
         }
+
+        .text-header {
+            max-width: 1200px;
+            margin-top: 2vh;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .posts-header {
+            display: flex;
+            width: 100%;
+            padding: 0 4vw;
+            margin-bottom: -20px;
+            font-size: 0.7em;
+        }
     }
 
     @media (max-width: 400px) {
@@ -242,6 +287,20 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
             grid-template-columns: repeat(2, 1fr); 
             padding: 0 4vw;
             gap: 0.5em;
+        }
+
+        .text-header {
+            max-width: 1200px;
+            margin-top: 2vh;
+            padding: 0 4vw;
+            text-align: center;
+        }
+
+        .posts-header {
+            display: flex;
+            width: 100%;
+            padding: 0 4vw;
+            margin-bottom: -20px;
         }
     }
 
