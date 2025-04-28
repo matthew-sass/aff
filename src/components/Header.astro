@@ -169,6 +169,7 @@ h1 {
 .ham {
     cursor: pointer;
     transition: transform 400ms;
+    margin-right: -10px;
 }
 
 .hamRotate.active {
@@ -207,8 +208,7 @@ h1 {
     height: 100%;
     background-color: #1d1b1a;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
     opacity: 0;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     visibility: hidden;
@@ -216,9 +216,11 @@ h1 {
 }
 
 .overlay-nav {
-    text-align: center;
+    text-align: left;
     position: absolute;
-    top: 20%;
+    top: 5%;
+    left: 0%;
+    width: 100%;
 }
 
 .overlay-nav ul {
@@ -232,22 +234,13 @@ h1 {
 }
 
 .overlay-nav li {
-    padding-bottom: 2vh;
+    padding: 10px;
 }
 
 .overlay-nav a {
     color: white;
-    font-size: 1rem;
+    font-size: 1.3rem;
     text-decoration: none;
-}
-
-.overlay-nav img {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70vw;
-    max-height: 30vh;
 }
 
 .overlay.active {

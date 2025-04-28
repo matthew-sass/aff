@@ -1,35 +1,250 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true}));
 ---
 <Layout>
 
+    <div class="header-container">
+        <div class="text-header">
+            <h1>Showcasing Vancouver's female and gender-diverse fronted talent.</h1>
+        </div>
+    </div>
     
+    <div class="recent-posts-container">
+
+        <div class="posts-header">
+            <h2>Recent Posts</h2>
+        </div>
+
+        <div class="list-container">
+            <ul class="post-grid">
+                {posts.slice(0,4).map((post: any, index: number) => (
+                    <li class="post slide-in" style={`animation-delay: ${index * 0.1}s`}>
+                        <a href={`${post.url}`}>
+                            <img src={post.frontmatter.heroImage} alt={post.frontmatter.title} loading="lazy"/>
+                            <div class="text-content">
+                                <h4 class="title">{post.frontmatter.title}</h4>
+                                <p class="subtitle">{post.frontmatter.subtitle}</p>
+                            </div>
+                            <div class="button-container">
+                                <button><span>→</span></button>
+                            </div>
+                        </a>
+                        
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
 
 </Layout>
 
 <style>
 
-    h3 {
-        margin: 0;
-    }
-
-    .home-content {
-        display: flex;
-        justify-content: center;
-        margin-top: 5vh;
-    }
-
-    .home-content img {
-        width: 35vw;
-    }
-
-    .about-box {
+    .header-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        max-width: 800px;
-        padding: 20px;
     }
+
+    .text-header {
+        max-width: 1200px;
+        margin-top: 5vh;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .recent-posts-container {
+        margin-top: 25px;
+        font-size: 2vh
+    }
+
+    .posts-header {
+        display: flex;
+        width: 100%;
+        padding: 0 4vw;
+        margin-bottom: -20px;
+    }
+
+    h1 {
+        margin: 0;
+        font-weight: 50;
+        font-size: 4rem;
+        font-size: 4.5vh;
+        font-family: 'Special Gothic Expanded One', sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .slide-in {
+        opacity: 0;
+        transform: translateY(400px);
+        animation: slideIn 1s forwards;
+        animation-fill-mode: forwards;
+        pointer-events: auto;
+    }
+
+    @keyframes slideIn {
+        0% {
+            opacity: 0;
+            transform: translateY(400px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .list-container {
+        display: flex;
+        width: 100%;
+    }
+
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: auto;
+        gap: 2em;
+        width: 100vw;
+        padding: 0 4vw;
+        box-sizing: border-box;
+    }
+
+    .post {
+        list-style: none;
+        overflow: hidden;
+        padding: 5px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.1em
+    }
+
+    .post a {
+        text-decoration: none;
+    }
+
+    .post img {
+        display: block;
+        width: 100%;
+        max-height: 727px;
+        aspect-ratio: 4/5;
+        object-fit: cover;
+        transition: .5s ease-in-out;
+    }
+
+    .post:hover img{
+        opacity: 0.4;
+    }
+
+    button {
+        width: 40px;
+        height: 40px; 
+        margin-top: 5px;
+        background-color: #1d1b1a;
+        border: none;
+        border-radius: 50%; 
+        color: #efeeee;
+        text-align: center;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        overflow: hidden; 
+    }
+
+    button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120%;
+        height: 120%;
+        background-color: rgba(239, 238, 238, 0.1); 
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .post:hover button::before {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    button span {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .button-container {
+        display: flex;
+        justify-content: flex-end; 
+        margin-top: 8px;
+    }
+
+    .text-content {
+        color: #efeeee;
+    }
+
+    .text-content h4 {
+        margin: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .text-content p {
+        margin: 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.9em;
+    }
+
+    @media (max-width: 1920px) {
+        .post-grid {
+            grid-template-columns: repeat(4, 1fr); 
+            padding: 0 3vw;
+            gap: 1.5em;
+        }
+    }
+
+    @media (max-width: 1022px) {
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr); 
+            padding: 0 3vw;
+            gap: 1.2em;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr); 
+            padding: 0 4vw;
+            gap: 1.4em;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .post-grid {
+            grid-template-columns: repeat(2, 1fr); 
+            padding: 0 4vw;
+            gap: 0.5em;
+        }
+    }
+
+    
 </style>
 
