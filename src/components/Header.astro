@@ -78,7 +78,6 @@ h1 {
 .mobile {
     display: none;
     height: 75px;
-    box;
     background-color: #1d1b1a;
 }
 
@@ -217,7 +216,7 @@ h1 {
 .overlay-nav {
     text-align: left;
     position: absolute;
-    top: 5%;
+    top: 15%;
     left: 0%;
     width: 100%;
 }
@@ -244,29 +243,38 @@ h1 {
 
 .overlay.active {
     opacity: 1;
-    visibility: visible;
+    visibility: visible;   
 }
 </style>
 
 <script is:inline>
     function toggleMenu() {
-        document.querySelector('.ham').classList.toggle('active');
-        document.getElementById('overlay').classList.toggle('active');
+        const ham = document.querySelector('.ham');
+        const overlay = document.getElementById('overlay');
+        const body = document.body;
+
+        ham.classList.toggle('active');
+        overlay.classList.toggle('active');
+
+        if (overlay.classList.contains('active')) {
+            body.style.overflow = 'hidden'; 
+        } else {
+            body.style.overflow = ''; 
+        }
     }
 
     let lastScrollTop = 0;
     const header = document.querySelector('header');
 
     window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
         if (scrollTop > lastScrollTop) {
-            // Scrolling down
-            header.style.top = "-80px"; // move header up (hide it)
+            header.style.top = "-80px";
         } else {
-            // Scrolling up
-            header.style.top = "0"; // move header down (show it)
+            header.style.top = "0";
         }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // prevent negative
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
 </script>
+
