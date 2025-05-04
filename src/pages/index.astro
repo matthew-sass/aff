@@ -26,8 +26,9 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
                                 <h4 class="title">{post.frontmatter.title}</h4>
                                 <p class="subtitle">{post.frontmatter.subtitle}</p>
                             </div>
-                            <div class="button-container">
-                                <button><span>→</span></button>
+                            <div class="arrow">
+                                <div class="arrow-top"></div>
+                                <div class="arrow-bottom"></div>
                             </div>
                         </a>
                         
@@ -56,14 +57,14 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
 
     .recent-posts-container {
         margin-top: 25px;
-        font-size: 1em;
+        font-size: 0.8em;
     }
 
     .posts-header {
         display: flex;
         width: 100%;
         padding: 0 4vw;
-        margin-bottom: -20px;
+        
     }
 
     h1 {
@@ -114,7 +115,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
     .post {
         list-style: none;
         overflow: hidden;
-        padding: 5px;
+        padding-bottom: 5px;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -138,53 +139,68 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
         opacity: 0.4;
     }
 
-    button {
-        width: 40px;
-        height: 40px; 
-        margin-top: 5px;
-        background-color: #1d1b1a;
-        border: none;
-        border-radius: 50%; 
-        color: #efeeee;
-        text-align: center;
-        font-size: 1em;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        position: relative;
-        z-index: 1;
-        overflow: hidden; 
+    .arrow {
+        width: 10px;
+        height: 10px;
+        margin-top: 12px; 
+        position: relative; 
+        margin-left: auto;
+        z-index: 2;
     }
 
-    button::before {
-        content: '';
+    .arrow-top, .arrow-bottom {
+        background-color: #666;
+        height: 4px;
+        left: -5px;
         position: absolute;
         top: 50%;
-        left: 50%;
-        width: 120%;
-        height: 120%;
-        background-color: rgba(239, 238, 238, 0.1); 
-        border-radius: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0;
-        transition: transform 0.4s ease, opacity 0.4s ease;
+        width: 75%;
     }
 
-    .post:hover button::before {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+    .arrow-top:after, .arrow-bottom:after {
+        background-color: #fff;
+        content: "";
+        height: 100%;
+        position: absolute;
+        top: 0;
+        transition: all 0.15s;
     }
 
-    button span {
-        display: inline-block;
-        transition: transform 0.3s ease;
-        position: relative;
-        z-index: 1;
+    .arrow-top {
+        transform: rotate(45deg);
+        transform-origin: bottom right;
     }
-    
-    .button-container {
-        display: flex;
-        justify-content: flex-end; 
-        margin-top: 8px;
+
+    .arrow-top:after {
+        left: 100%;
+        right: 0;
+        transition-delay: 0s;
+    }
+
+    .arrow-bottom {
+        transform: rotate(-45deg);
+        transform-origin: top right;
+    }
+
+    .arrow-bottom:after {
+        left: 0;
+        right: 100%;
+        transition-delay: 0.15s;
+    }
+
+    .post:hover .arrow-top:after {
+        left: 0;
+        transition-delay: 0.15s;
+    }
+
+    .post:hover .arrow-bottom:after {
+        right: 0;
+        transition-delay: 0s;
+    }
+
+
+    .arrow:active {
+        transform: translateX(-50%) translateY(-50%) scale(0.9);
     }
 
     .text-content {
@@ -193,8 +209,8 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
 
     .text-content h4 {
         margin: 0;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
@@ -230,7 +246,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
             display: flex;
             width: 100%;
             padding: 0 3vw;
-            margin-bottom: -20px;
+            margin-bottom: -30px;
         }
 
     }
