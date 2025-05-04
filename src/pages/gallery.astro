@@ -14,7 +14,7 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
                                     src={post.frontmatter.thumbnail} 
                                     alt="" 
                                     class="slide-in" 
-                                    style={`animation-delay: ${index * 0.1}s`} 
+                                    style={`animation-delay: ${index * 0.03}s`} 
                                 />
                             </a>
                         </div>
@@ -30,7 +30,7 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
 
 .slide-in {
     opacity: 0;
-    transform: translateY(400px);
+    transform: translateX(400px);
     animation: slideIn 1s forwards;
     animation-fill-mode: forwards;
     pointer-events: auto;
