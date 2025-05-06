@@ -7,7 +7,7 @@ console.log(frontmatter)
 
 <Layout>
 
-<h3>{frontmatter.title}</h3>
+<h4>{frontmatter.title}</h4>
   <div class="list-container">
     <div class="masonry-grid">
       {frontmatter.images.map(({image, caption}) => (
@@ -37,6 +37,14 @@ import lightboxPlusJquery from "../js/lightbox-plus-jquery";
 
 <style>
 
+h4 {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.post {
+  font-size: 1.1em;
+}
 
 .list-container {
   display: flex;
@@ -48,7 +56,9 @@ import lightboxPlusJquery from "../js/lightbox-plus-jquery";
     column-count: 4;
     column-gap: 1em;
     max-width: 100%;
-    margin: 1vh 2vw;
+    border-top: 1px solid #efeeee;
+    padding-top: 10px;
+    margin: 0vh 4vw;
 }
 
 .post {
@@ -98,7 +108,4 @@ a {
     }
 }
 
-    
-    
-    
 </style>
