@@ -1,47 +1,58 @@
 ---
 import Layout from "../layouts/Layout.astro";
-const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true}));
+const posts = Object.values(
+    await import.meta.glob("./blog/*.md", { eager: true }),
+);
 ---
-<Layout>
 
+<Layout>
     <div class="header-container">
         <div class="text-header">
             <!-- <h1>Showcasing Vancouver's female and gender-diverse fronted talent.</h1> -->
         </div>
     </div>
-    
-    <div class="recent-posts-container">
 
+    <div class="recent-posts-container">
         <div class="posts-header">
             <h2>Recent Posts</h2>
         </div>
 
         <div class="list-container">
             <ul class="post-grid">
-                {posts.slice(0,4).map((post: any, index: number) => (
-                    <li class="post slide-in" style={`animation-delay: ${index * 0.1}s`}>
-                        <a href={`${post.url}`}>
-                            <img src={post.frontmatter.heroImage} alt={post.frontmatter.title} loading="lazy"/>
-                            <div class="text-content">
-                                <h4 class="title">{post.frontmatter.title}</h4>
-                                <p class="subtitle">{post.frontmatter.subtitle}</p>
-                            </div>
-                            <div class="arrow">
-                                <div class="arrow-top"></div>
-                                <div class="arrow-bottom"></div>
-                            </div>
-                        </a>
-                        
-                    </li>
-                ))}
+                {
+                    posts.slice(0, 4).map((post: any, index: number) => (
+                        <li
+                            class="post slide-in"
+                            style={`animation-delay: ${index * 0.1}s`}
+                        >
+                            <a href={`${post.url}`}>
+                                <img
+                                    src={post.frontmatter.heroImage}
+                                    alt={post.frontmatter.title}
+                                    loading="lazy"
+                                />
+                                <div class="text-content">
+                                    <h4 class="title">
+                                        {post.frontmatter.title}
+                                    </h4>
+                                    <p class="subtitle">
+                                        {post.frontmatter.subtitle}
+                                    </p>
+                                </div>
+                                <div class="arrow">
+                                    <div class="arrow-top" />
+                                    <div class="arrow-bottom" />
+                                </div>
+                            </a>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
     </div>
-
 </Layout>
 
 <style>
-
     .header-container {
         display: flex;
         flex-direction: column;
@@ -50,7 +61,6 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
 
     .text-header {
         max-width: 1200px;
-        padding: 5px;
         text-align: center;
     }
 
@@ -61,13 +71,14 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
     .posts-header {
         display: flex;
         width: 100%;
+        margin-bottom: -25px;
         padding: 0 4vw;
-        
+        margin-left: 5px;
     }
 
     h1 {
         margin: 0;
-        font-family: 'Special Gothic Expanded One', sans-serif;
+        font-family: "Special Gothic Expanded One", sans-serif;
     }
 
     * {
@@ -111,11 +122,11 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
     .post {
         list-style: none;
         overflow: hidden;
-        padding-bottom: 5px;
         position: relative;
         display: flex;
+        padding: 5px;
         flex-direction: column;
-        font-size: 1.1em
+        font-size: 1.1em;
     }
 
     .post a {
@@ -128,24 +139,25 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
         max-height: 727px;
         aspect-ratio: 4/5;
         object-fit: cover;
-        transition: .5s ease-in-out;
+        transition: 0.5s ease-in-out;
     }
 
-    .post:hover img{
+    .post:hover img {
         opacity: 0.4;
     }
 
     .arrow {
         width: 10px;
         height: 10px;
-        margin-top: 12px; 
-        position: relative; 
+        margin-top: 12px;
+        position: relative;
         margin-left: auto;
         z-index: 2;
         margin-bottom: 10px;
     }
 
-    .arrow-top, .arrow-bottom {
+    .arrow-top,
+    .arrow-bottom {
         background-color: #666;
         height: 4px;
         left: -5px;
@@ -154,7 +166,8 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
         width: 75%;
     }
 
-    .arrow-top:after, .arrow-bottom:after {
+    .arrow-top:after,
+    .arrow-bottom:after {
         background-color: #fff;
         content: "";
         height: 100%;
@@ -195,7 +208,6 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
         transition-delay: 0s;
     }
 
-
     .arrow:active {
         transform: translateX(-50%) translateY(-50%) scale(0.9);
     }
@@ -215,7 +227,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
         text-overflow: ellipsis;
         font-size: 1.3em;
     }
-    
+
     .text-content p {
         margin: 0;
         display: -webkit-box;
@@ -228,96 +240,33 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', {eager: true})
 
     @media (max-width: 1920px) {
         .post-grid {
-            grid-template-columns: repeat(4, 1fr); 
+            grid-template-columns: repeat(3, 1fr);
             padding: 0 3vw;
             gap: 1.5em;
         }
-
-        .text-header {
-            max-width: 1200px;
-            margin-top: 5vh;
-            padding: 5px;
-            text-align: center;
-        }
-
-        .posts-header {
-            display: flex;
-            width: 100%;
-            padding: 0 3vw;
-            margin-bottom: -30px;
-        }
-
     }
 
     @media (max-width: 1022px) {
         .post-grid {
-            grid-template-columns: repeat(2, 1fr); 
+            grid-template-columns: repeat(3, 1fr);
             padding: 0 3vw;
             gap: 1.2em;
         }
-
-        .text-header {
-            max-width: 1200px;
-            margin-top: 3vh;
-            padding: 5px;
-            text-align: center;
-        }
-
-        .posts-header {
-            display: flex;
-            width: 100%;
-            padding: 0 3vw;
-            font-size: 0.8em;
-            margin-bottom: -20px;
-        }
-
     }
 
     @media (max-width: 768px) {
         .post-grid {
-            grid-template-columns: repeat(2, 1fr); 
+            grid-template-columns: repeat(2, 1fr);
             padding: 0 4vw;
             gap: 1.4em;
-        }
-
-        .text-header {
-            max-width: 1200px;
-            margin-top: 2vh;
-            padding: 5px;
-            text-align: center;
-        }
-
-        .posts-header {
-            display: flex;
-            width: 100%;
-            padding: 0 4vw;
-            margin-bottom: -20px;
-            font-size: 0.8em;
         }
     }
 
     @media (max-width: 400px) {
         .post-grid {
-            grid-template-columns: repeat(2, 1fr); 
+            grid-template-columns: repeat(2, 1fr);
             padding: 0 4vw;
             gap: 0.5em;
         }
-
-        .text-header {
-            max-width: 1200px;
-            margin-top: 2vh;
-            padding: 0 4vw;
-            text-align: center;
-        }
-
-        .posts-header {
-            display: flex;
-            width: 100%;
-            padding: 0 4vw;
-            margin-bottom: -20px;
-        }
     }
-
-    
 </style>
-
