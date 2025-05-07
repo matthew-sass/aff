@@ -1,5 +1,6 @@
 ---
 import Layout from "./Layout.astro";
+import Image from "astro/components/Image.astro";
 import '../styles/lightbox.css'
 const { frontmatter } = Astro.props;
 console.log(frontmatter)
@@ -10,16 +11,24 @@ console.log(frontmatter)
 <h4>{frontmatter.title}</h4>
   <div class="list-container">
     <div class="masonry-grid">
-      {frontmatter.images.map(({image, caption}) => (
+      {frontmatter.images.map(({ image, caption }, index) => (
         <div class="post">
           <a href={image} data-lightbox="gallery-post" data-title={caption}>
-            <img src={image} alt="Gallery image" loading="lazy" />
+            <Image 
+              src={image} 
+              alt={caption} 
+              width={600} 
+              height={400}
+              class="slide-in" 
+              style={`animation-delay: ${index * 0.03}s`} 
+            />
           </a>
         </div>
       ))}
     </div>
   </div>
     
+  
   
 </Layout>
 
@@ -40,6 +49,25 @@ import lightboxPlusJquery from "../js/lightbox-plus-jquery";
 h4 {
   text-align: center;
   margin-top: 10vh;
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateX(400px);
+    animation: slideIn 1s forwards;
+    animation-fill-mode: forwards;
+    pointer-events: auto;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(400px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .post {
