@@ -28,7 +28,6 @@ html {
     font-family: 'PPNeueMontreal-Book', sans-serif
 }
 
-
 body {
     margin: 85px 0;
     padding: 0;
@@ -40,6 +39,18 @@ a {
 
 p {
     font-size: 1rem;
+}
+
+.desktop {
+    background-color: #1d1b1a;
+}
+
+.mobile {
+    background-color: #1d1b1a;
+}
+
+.overlay {
+    background-color: #1d1b1a;
 }
 
 .hidden {
