@@ -64,6 +64,11 @@ h4 {
         opacity: 0;
         transform: translateY(400px);
     }
+
+    20% {
+        opacity: 0;
+    }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -82,19 +87,17 @@ h4 {
 
 .masonry-grid {
     column-count: 4;
-    column-gap: 1em;
+    column-gap: 0.4em;
     max-width: 100%;
-    border-top: 1px solid #efeeee;
-    padding-top: 10px;
-    margin: 0vh 4vw;
+    margin: 1vh 4vw;
 }
 
 .post {
     display: inline-block;
+    margin-bottom: 0.3em;
     break-inside: avoid;
     position: relative;
-    margin-bottom: 1em;
-    transition: transform ease-in-out 1.0s;
+    transition: transform ease-in-out 0.8s;
 }
 
 .post img {
@@ -114,25 +117,26 @@ a {
 
 @media (max-width: 1020px) {
     .masonry-grid {
-        margin: 0.75vh 3vw;
+        margin: 0.5vh 3vw;
         column-count: 3;
         column-gap: 0.75em;
     }
 
     .post {
-        margin-bottom: 0.75em;
+        margin-bottom: 0.5em;
     }
+    
 }
 
 @media (max-width: 768px) {
     .masonry-grid {
         margin: 0.5vh 3vw;
         column-count: 2;
-        column-gap: 0.75em;
+        column-gap: 0.25em;
     }
 
     .post {
-        margin-bottom: 0.75em;
+        margin: 0.25vh 0.25vw;
     }
 }
 

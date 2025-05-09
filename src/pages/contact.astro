@@ -3,6 +3,11 @@ import Layout from "../layouts/Layout.astro";
 ---
 <Layout>
     <div class="container">
+
+      <div class="text-content">
+        <h3>For any inquiries about XYZ, to be edited in the future!</h3>
+      </div>
+
         <p>Contact</p>
         <form method="POST" action="https://formsubmit.co/matthew.sass35@gmail.com">
             <input type="email" name="email" placeholder="Your email...">
@@ -33,6 +38,10 @@ import Layout from "../layouts/Layout.astro";
       background: transparent;
       border: none;
       cursor: pointer;
+    }
+
+    .text-content {
+      margin-bottom: 5vh;
     }
 
     .button {
