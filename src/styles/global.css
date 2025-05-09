@@ -22,11 +22,10 @@
     font-display: swap; 
 }
 
-html, body {
-    background: #1d1b1a;
+html {
+    background-color: #1d1b1a;
     color: #efeeee;
-    font-family: 'PPNeueMontreal-Book', sans-serif;
-    overscroll-behavior: none;
+    font-family: 'PPNeueMontreal-Book', sans-serif
 }
 
 body {
