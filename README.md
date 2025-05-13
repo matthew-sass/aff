@@ -1,6 +1,6 @@
-# [All Femme Fronted](www.allfemmefronted.com) Site Doc
+# [All Femme Fronted](https://www.allfemmefronted.com) Site Doc
 ## Posting
-All posts can be created, updated, and deleted through the [content manager](www.allfemmefronted.com/admin). 
+All posts can be created, updated, and deleted through the [content manager](https://www.allfemmefronted.com/admin). 
 
 ### Blog Thumbnails - 4:5 aspect ratio, minimum 600px width 
 ### Gallery Thumbnails - Any aspect ratio, minimum 600px width
