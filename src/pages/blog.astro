@@ -233,7 +233,7 @@ const posts = Object.values(await import.meta.glob('./blog/*.md', { eager: true 
 
     @media (max-width: 400px) {
         .post-grid {
-            repeat(2, 1fr); 
+            grid-template-columns: repeat(1, 1fr); 
             padding: 0 4vw;
             gap: 0.7em;
         }

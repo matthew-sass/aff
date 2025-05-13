@@ -8,7 +8,7 @@ const posts = Object.values(
 <Layout>
     <div class="header-container">
         <div class="text-header">
-            <!-- <h1>Showcasing Vancouver's female and gender-diverse fronted talent.</h1> -->
+            Supporting Vancouver's female and gender-diverse fronted artists.
         </div>
     </div>
 
@@ -55,9 +55,16 @@ const posts = Object.values(
 <style>
     .header-container {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: flex-start; 
+        align-items: flex-start;
+        background-image: url('../indexbackground.webp');
+        background-size: cover;
+        min-height: 50vh;
+        margin: 0 4vw;
+        padding: 4vh 2vw; 
+        font-size: 1.5em;
     }
+
 
     .text-header {
         max-width: 1200px;
@@ -271,6 +278,11 @@ const posts = Object.values(
         .text-content p {
             font-size: 1.0em;
         }
+
+        .header-container {
+            font-size: 1.2em;
+            margin: 0 3vw;
+        }
         
     }
 
@@ -293,6 +305,10 @@ const posts = Object.values(
         .text-content p {
             font-size: 1.0em;
         }
+
+        .header-container {
+            font-size: 1em;
+        }
     }
 
     @media (max-width: 400px) {
@@ -313,6 +329,12 @@ const posts = Object.values(
 
         .text-content p {
             font-size: 1.0em;
+        }
+
+        .header-container {
+            font-size: 1em;
+            padding: 3vh 2vw; 
+            margin: 0 4vw;
         }
     }
 </style>
