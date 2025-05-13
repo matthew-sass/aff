@@ -60,6 +60,12 @@ const thumbnails = Object.values(await import.meta.glob('./gallery/*.md', {eager
     width: 100%;
 }
 
+.image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2; 
+}
+
 .masonry-grid {
     column-count: 4;
     column-gap: 0.4em;
