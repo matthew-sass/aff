@@ -14,11 +14,10 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
                             </a> 
                             
                             <div class="overlay-pdf">
-                                <div class="text-content">
+                                <div class="text-row">
                                     <h4 class="title">{post.frontmatter.title}</h4>
+                                    <a href={`${post.frontmatter.file}`} class="view-button">View</a>
                                 </div>
-                                <a href={`${post.frontmatter.file}`} class="border-flip border-flip--black btn" style="margin-right: 10px;">View</a>
-                                <a href={`${post.frontmatter.file}`} download class="border-flip border-flip--black btn">Download</a>
                             </div>
                         </div>
                         
@@ -73,9 +72,6 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
         padding-bottom: 20px;
     }
 
-    .post:hover {
-    }
-
     .post img {
         width: 100%;
         height: auto;
@@ -96,11 +92,23 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
         text-align: center;
     }
 
-    .btn-wrapper {
-      display: flex;
-      justify-content: center;
+    .text-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 8px;
     }
-  
+
+    .view-button {
+        margin-right: 5px;
+        padding: 3px 18px;
+        color: #efeeee;
+        text-decoration: none;
+        font-weight: 900;
+        outline: 2px solid #efeeee;
+        border-radius: 9999rem;
+    }
+
 
     
 </style>
