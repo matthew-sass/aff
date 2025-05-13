@@ -6,13 +6,13 @@ const posts = Object.values(
 ---
 
 <Layout>
-    <div class="header-container">
-        <div class="text-header">
+    <div class="header-container slide-in">
+        <div class="text-header slide-in">
             Supporting Vancouver's female and gender-diverse fronted artists.
         </div>
     </div>
 
-    <div class="recent-posts-container">
+    <div class="recent-posts-container slide-in">
         <div class="posts-header">
             <h2>Recent Posts</h2>
         </div>
@@ -53,6 +53,26 @@ const posts = Object.values(
 </Layout>
 
 <style>
+
+    @keyframes fadeUpIn {
+        0% {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .slide-in {
+        opacity: 0;
+        animation: fadeUpIn 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        will-change: transform, opacity;
+    }
+
+
+
     .header-container {
         display: flex;
         justify-content: flex-start; 
@@ -92,25 +112,6 @@ const posts = Object.values(
     * {
         box-sizing: border-box;
     }
-
-    /* .slide-in {
-        opacity: 0;
-        transform: translateY(400px);
-        animation: slideIn 0.7s forwards;
-        animation-fill-mode: forwards;
-        pointer-events: auto;
-    }
-
-    @keyframes slideIn {
-        0% {
-            opacity: 0;
-            transform: translateY(400px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    } */
 
     .list-container {
         display: flex;
