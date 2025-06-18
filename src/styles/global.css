@@ -29,7 +29,7 @@ html, body {
 }
 
 body {
-    margin: 95px 0;
+    margin: 100px 0;
     padding: 0;
 }
 
@@ -37,9 +37,7 @@ a {
     color: #efeeee;
 }
 
-p {
-    font-size: 1rem;
-}
+
 
 .desktop {
     background-color: #1d1b1a;

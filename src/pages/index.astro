@@ -1,4 +1,6 @@
 ---
+import Image from "astro/components/Image.astro";
+import websitebanner from "../websitebanner.webp"
 import Layout from "../layouts/Layout.astro";
 const posts = Object.values(
     await import.meta.glob("./blog/*.md", { eager: true }),
@@ -6,6 +8,10 @@ const posts = Object.values(
 ---
 
 <Layout>
+
+    <!-- <div class="banner-container slide-in">
+        <Image src={websitebanner} alt="banner" width={1600} height={900} class="banner-image"></Image>
+    </div> -->
     <div class="header-container slide-in">
         <div class="text-header slide-in">
             Supporting Vancouver's female and gender-diverse fronted artists.
@@ -69,6 +75,20 @@ const posts = Object.values(
         opacity: 0;
         animation: fadeUpIn 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
         will-change: transform, opacity;
+    }
+
+    .banner-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .banner-image {
+        width: 100%;
+        height: auto;
+        margin: 0 4vw;
+        max-height: 900px;
+        object-fit: cover;
+        object-position: top left;
     }
 
     .header-container {
