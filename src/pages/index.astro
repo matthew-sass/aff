@@ -1,6 +1,6 @@
 ---
 import Image from "astro/components/Image.astro";
-import websitebanner from "../websitebanner.webp"
+import websitebanner from "../banner.webp"
 import Layout from "../layouts/Layout.astro";
 const posts = Object.values(
     await import.meta.glob("./blog/*.md", { eager: true }),
@@ -9,14 +9,34 @@ const posts = Object.values(
 
 <Layout>
 
-    <!-- <div class="banner-container slide-in">
+    <div class="banner-container slide-in">
         <Image src={websitebanner} alt="banner" width={1600} height={900} class="banner-image"></Image>
-    </div> -->
-    <div class="header-container slide-in">
-        <div class="text-header slide-in">
-            Supporting Vancouver's female and gender-diverse fronted artists.
-        </div>
     </div>
+    <!-- <div class="header-container slide-in">
+        <div class="text-header slide-in">
+            Hi, I'm Amanda!
+            Initially intended to be a single show, All Femme Fronted was created in July of 2022 when a bandmate and I trying to come up with unique ideas for shows. As the group was fronted by a woman, we landed on All Femme Fronted: a show featuring acts exclusively with female or gender-diverse leads.
+            When the show saw some success in February of 2023, and after following the suggestions of a professor of mine, I decided to start creating show opportunities for musicians. All Femme Fronted evolved to become a concert series and later, a place to promote local female and gender-diverse musicians and build awareness about cool opportunities for musicians.
+            I hope that by showcasing the incredible contributions of our community to Vancouver’s underground music scene I can advocate for more gender-diversity on more local bills, especially in genre scenes where femme representation may be lacking.
+            I look forward to watching this community evolve, grow, and become stronger together!
+        </div>
+    </div> -->
+
+    <div class="info-card slide-in">
+        <p>
+            Hi, I'm Amanda!
+        </p>
+        <br>
+        <p>
+            Initially intended to be a single show, All Femme Fronted was created in July of 2022 when a bandmate and I trying to come up with unique ideas for shows. As the group was fronted by a woman, we landed on All Femme Fronted: a show featuring acts exclusively with female or gender-diverse leads.
+            When the show saw some success in February of 2023, and after following the suggestions of a professor of mine, I decided to start creating show opportunities for musicians. 
+            
+            <br><br>All Femme Fronted evolved to become a concert series and later, a place to promote local female and gender-diverse musicians and build awareness about cool opportunities for musicians.
+            I hope that by showcasing the incredible contributions of our community to Vancouver’s underground music scene I can advocate for more gender-diversity on more local bills, especially in genre scenes where femme representation may be lacking.
+            <br><br>I look forward to watching this community evolve, grow, and become stronger together!
+        </p>
+    </div>
+    
 
     <div class="recent-posts-container slide-in">
         <div class="posts-header">
@@ -86,7 +106,7 @@ const posts = Object.values(
         width: 100%;
         height: auto;
         margin: 0 4vw;
-        max-height: 900px;
+        max-height: 40vh;
         object-fit: cover;
         object-position: top left;
     }
@@ -103,6 +123,46 @@ const posts = Object.values(
         font-size: 1.5em;
         font-weight: 900;
     }
+
+    .info-card {
+        margin: 4vh 4vw;
+        padding: 2em 2.5em;
+        background: linear-gradient(145deg, #242220, #1a1918); /* inner dark background */
+        position: relative;
+        color: #efeeee;
+        font-size: 1.3em;
+        line-height: 1.6;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1;
+
+        /* border: 2px solid transparent;
+        background-image: 
+            linear-gradient(145deg, #242220, #1a1918), 
+            linear-gradient(90deg, #a855f7, #ec4899, #f97316); 
+        background-origin: border-box;
+        background-clip: padding-box, border-box; */
+    }
+
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+    }
+
+
+    .info-card h2 {
+        margin-top: 0;
+        font-family: "Special Gothic Expanded One", sans-serif;
+        font-size: 1.6em;
+        color: #ffffff;
+    }
+
+    .info-card p {
+        margin: 0;
+        font-family: 'PPNeueMontreal-Book', sans-serif;
+        color: #d1d0cf;
+    }
+
 
 
     .text-header {
@@ -302,6 +362,10 @@ const posts = Object.values(
 
         .header-container {
             font-size: 1.2em;
+            margin: 0 3vw;
+        }
+
+        .banner-image {
             margin: 0 3vw;
         }
         
