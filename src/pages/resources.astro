@@ -71,7 +71,7 @@ const posts = Object.values(
 
   .daisy {
     position: absolute;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
     opacity: 0.5;
     width: 30vw;
@@ -88,6 +88,15 @@ const posts = Object.values(
   .daisy-right {
     right: 0;
   }
+
+  .daisy {
+  opacity: 0; /* hidden initially */
+  transition: opacity 0.8s ease-in-out;
+}
+
+.daisy.fade-in {
+  opacity: 0.5; /* final visible opacity */
+}
 
   /* Main content */
   .list-container {
@@ -164,3 +173,10 @@ const posts = Object.values(
     }
   }
 </style>
+
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".daisy").forEach(d => d.classList.add("fade-in"));
+  });
+</script>
+
