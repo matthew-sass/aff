@@ -1,116 +1,166 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import '../styles/lightbox.css'
-const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: true}));
+import daisy from "../daisy.webp";
+const posts = Object.values(
+  await import.meta.glob("./resources/*.md", { eager: true })
+);
 ---
 <Layout>
+  <div class="background-wrapper">
+    <!-- Background Daisies -->
+    <img src={daisy.src} alt="Daisy" class="daisy daisy-left" />
+    <img src={daisy.src} alt="Daisy" class="daisy daisy-right" />
+
+    <!-- Content -->
     <div class="list-container">
-        <ul class="post-grid">
-            {posts.map((post: any) => (
-                <li class="post">
-                        <div class="thumbnail-wrapper">
-                            <a href={post.frontmatter.thumbnail} data-lightbox={post.frontmatter.title}>
-                                <img src={post.frontmatter.thumbnail} alt=""  />    
-                            </a> 
-                            
-                            <div class="overlay-pdf">
-                                <div class="text-row">
-                                    <h4 class="title">{post.frontmatter.title}</h4>
-                                    <a href={`${post.frontmatter.file}`} class="view-button">View</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </a>
-                </li>
-            ))}
-        </ul>
+      <ul class="post-grid">
+        {posts.map((post: any) => (
+          <li class="post">
+            <div class="thumbnail-wrapper">
+              <a
+                href={post.frontmatter.thumbnail}
+                data-lightbox={post.frontmatter.title}
+              >
+                <img src={post.frontmatter.thumbnail} alt="" />
+              </a>
+
+              <div class="overlay-pdf">
+                <div class="text-row">
+                  <h4 class="title">{post.frontmatter.title}</h4>
+                  <a href={`${post.frontmatter.file}`} class="view-button">
+                    View
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
+  </div>
 </Layout>
 
 <script is:inline src="/js/lightbox-plus-jquery.js"></script>
 
 <script is:inline>
-    import lightboxPlusJquery from "../js/lightbox-plus-jquery";
-
-    lightboxPlusJquery.option({
-        'resizeDuration': 200,
-        'wrapAround': 200,
-        'positionFromTop': 20
-    })
+  import lightboxPlusJquery from "../js/lightbox-plus-jquery";
+  lightboxPlusJquery.option({
+    resizeDuration: 200,
+    wrapAround: 200,
+    positionFromTop: 20,
+  });
 </script>
 
 <style>
-    
-    * {
-        box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Background wrapper and daisies */
+  .background-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 0;
+  }
+
+  .daisy {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    width: 30vw;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .daisy-left {
+    left: 0;
+    transform: translateY(-50%) scaleX(-1);
+  }
+
+  .daisy-right {
+    right: 0;
+  }
+
+  /* Main content */
+  .list-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+    ul, li {
+    margin: 0;
+    padding: 10px;
+    list-style: none;
     }
 
-    .list-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+  .post-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    width: 100%;
+    margin: 2.5vh 0;
+  }
+
+  .post {
+    list-style: none;
+    overflow: hidden;
+    transition: transform ease-in-out 0.3s;
+    padding-bottom: 20px;
+  }
+
+  .post img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    outline: 1px solid;
+  }
+
+  .post h4 {
+    margin: 0;
+    padding-bottom: 5px;
+  }
+
+  a {
+    text-align: center;
+  }
+
+  .text-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+  }
+
+  .view-button {
+    margin-right: 5px;
+    padding: 3px 18px;
+    color: #efeeee;
+    text-decoration: none;
+    font-weight: 900;
+    outline: 2px solid #efeeee;
+    border-radius: 9999rem;
+  }
+
+  /* Hide daisies on smaller screens */
+  @media (max-width: 1020px) {
+    .daisy {
+      display: none;
     }
-
-    .post-grid {
-        max-width: 600px;
-        margin: 2.5vh auto;
-        padding: 0 20px;
-        width: 100%;
-        display: grid;
-        grid-auto-rows: auto;
-        grid-template-columns: 1fr;
-        gap: 1em;
-        justify-content: center;
-    }
-
-    .post {
-        list-style: none;
-        overflow: hidden;
-        transition: transform ease-in-out 0.3s;
-        padding-bottom: 20px;
-    }
-
-    .post img {
-        width: 100%;
-        height: auto;
-        max-width: auto;
-        max-height: 250px;
-        object-position: top;
-        object-fit: cover;
-        outline: 1px solid;
-        border-radius: 5px;
-    }
-
-    .post h4 {
-        margin: 0;
-        padding-bottom: 5px;
-    }
-
-    a {
-        text-align: center;
-    }
-
-    .text-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 8px;
-    }
-
-    .view-button {
-        margin-right: 5px;
-        padding: 3px 18px;
-        color: #efeeee;
-        text-decoration: none;
-        font-weight: 900;
-        outline: 2px solid #efeeee;
-        border-radius: 9999rem;
-    }
-
-
-    
+  }
 </style>
-
-
