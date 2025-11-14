@@ -2,18 +2,15 @@
 import Image from "astro/components/Image.astro";
 import websitebanner from "../banner.webp"
 import Layout from "../layouts/Layout.astro";
-const posts = Object.values(
-    await import.meta.glob("./blog/*.md", { eager: true }),
-);
 ---
 
 <Layout>
 
     <div class="banner-container slide-in">
-        <Image src={websitebanner} alt="banner" width={1600} height={900} class="banner-image"></Image>
+        <Image src={websitebanner} alt="banner" width={1600} height={900} class="banner-image" />
     </div>
 
-    <!-- <div class="info-card slide-in">
+    <div class="info-card slide-in">
         <p>
             Hi, I'm Amanda!
         </p>
@@ -26,47 +23,8 @@ const posts = Object.values(
             I hope that by showcasing the incredible contributions of our community to Vancouver’s underground music scene I can advocate for more gender-diversity on more local bills, especially in genre scenes where femme representation may be lacking.
             <br><br>I look forward to watching this community evolve, grow, and become stronger together!
         </p>
-    </div> -->
-    
-
-    <div class="recent-posts-container slide-in">
-        <div class="posts-header">
-            <h2>Recent Posts</h2>
-        </div>
-
-        <div class="list-container">
-            <ul class="post-grid">
-                {
-                    posts.slice(0, 4).map((post: any, index: number) => (
-                        <li
-                            class="post slide-in"
-                            style={`animation-delay: ${index * 0.1}s`}
-                        >
-                            <a href={`${post.url}`}>
-                                <img
-                                    src={post.frontmatter.heroImage}
-                                    alt={post.frontmatter.title}
-                                    loading="lazy"
-                                />
-                                <div class="text-content">
-                                    <h4 class="title">
-                                        {post.frontmatter.title}
-                                    </h4>
-                                    <p class="subtitle">
-                                        {post.frontmatter.subtitle}
-                                    </p>
-                                </div>
-                                <div class="arrow">
-                                    <div class="arrow-top" />
-                                    <div class="arrow-bottom" />
-                                </div>
-                            </a>
-                        </li>
-                    ))
-                }
-            </ul>
-        </div>
     </div>
+
 </Layout>
 
 <style>

@@ -1,8 +1,8 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import CRLayout from "../layouts/CRLayout.astro";
 import daisy from "../daisy.webp";
 ---
-<Layout>
+<CRLayout>
   <div class="contact-section">
     <img src={daisy.src} alt="Daisy" class="daisy daisy-left" />
     <img src={daisy.src} alt="Daisy" class="daisy daisy-right" />
@@ -17,15 +17,12 @@ import daisy from "../daisy.webp";
         <input type="email" name="email" placeholder="Your email..." />
         <textarea name="message" placeholder="Your text..."></textarea>
         <div class="btn-wrapper">
-          <button type="submit" class="button">
-            <span class="back"></span>
-            Send
-          </button>
+          <button type="submit" class="button">Send</button>
         </div>
       </form>
     </div>
   </div>
-</Layout>
+</CRLayout>
 
 <style>
   * {
@@ -67,7 +64,7 @@ import daisy from "../daisy.webp";
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 5px;
+    gap: 10px;
     padding: 20px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -97,52 +94,27 @@ import daisy from "../daisy.webp";
 
   .btn-wrapper {
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
   }
 
+  /* Cleaner, smaller button */
   .button {
-    isolation: isolate;
-    color: #efeeee;
-    line-height: 1.5;
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.9em;
     font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 3px 18px;
-    border-radius: 9999rem;
-    background: transparent;
-    position: relative;
-    border: 2px solid #efeeee;
-    font-size: 1em;
-  }
-
-  .button > .back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: inherit;
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    z-index: -1;
-  }
-
-  .button > .back::before {
-    content: "";
-    width: 0;
-    height: auto;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: rgba(239, 238, 238, 0.1);
-    position: absolute;
+    color: #ffffff;
+    background-color: #242220;
+    border: 1px solid #efeeee;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   .button:hover {
-    color: white;
-  }
-
-  .button:hover > .back::before {
-    width: 120%;
+    background-color: #efeeee;
+    color: #242220;
   }
 
   /* Daisies fade-in */
@@ -153,10 +125,8 @@ import daisy from "../daisy.webp";
     width: 30vw;
     pointer-events: none;
     z-index: 0;
-
-    /* fade-in setup */
     opacity: 0;
-    transition: opacity 1.0s ease-in-out;
+    transition: opacity 1s ease-in-out;
   }
 
   .daisy-left {

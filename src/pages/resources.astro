@@ -1,32 +1,37 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import CRLayout from "../layouts/CRLayout.astro";
 import '../styles/lightbox.css'
+import daisy from "../daisy.webp";
 const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: true}));
 ---
 
-<Layout>
-  <div class="scroll-wrapper">
-    <div class="scroll-box">
-      <ul class="post-grid">
-        {posts.map((post: any) => (
-          <li class="post">
-            <div class="thumbnail-wrapper">
-              <a href={post.frontmatter.thumbnail} data-lightbox={post.frontmatter.title}>
-                <img src={post.frontmatter.thumbnail} alt="" />
-              </a>
-              <div class="overlay-pdf">
-                <div class="text-row">
-                  <h4 class="title">{post.frontmatter.title}</h4>
-                  <a href={`${post.frontmatter.file}`} class="view-button">View</a>
+<CRLayout>
+  <div class="resources-container">
+    <img src={daisy.src} alt="Daisy" class="daisy daisy-left" />
+    <img src={daisy.src} alt="Daisy" class="daisy daisy-right" />
+    <div class="scroll-wrapper">
+      <div class="scroll-box">
+        <ul class="post-grid">
+          {posts.map((post: any) => (
+            <li class="post">
+              <div class="thumbnail-wrapper">
+                <a href={post.frontmatter.thumbnail} data-lightbox={post.frontmatter.title}>
+                  <img src={post.frontmatter.thumbnail} alt="" />
+                </a>
+                <div class="overlay-pdf">
+                  <div class="text-row">
+                    <h4 class="title">{post.frontmatter.title}</h4>
+                    <a href={`${post.frontmatter.file}`} class="view-button">View</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
-</Layout>
+</CRLayout>
 
 <script is:inline src="/js/lightbox-plus-jquery.js"></script>
 
@@ -45,6 +50,17 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
     box-sizing: border-box;
   }
 
+  .resources-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* top alignment like contact-section */
+    overflow: hidden;
+  }
+
+
   /* Scrollable box wrapper */
   .scroll-wrapper {
     display: flex;
@@ -60,7 +76,7 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
     max-height: 70vh;       
     overflow-y: auto;       
     padding: 1rem;
-    background-color: #1a1a1a; /* darker background for contrast */
+    background-color: transparent;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     border-radius: 8px;
   }
@@ -118,4 +134,44 @@ const posts = Object.values(await import.meta.glob('./resources/*.md', {eager: t
     background: rgba(255,255,255,0.1); /* subtle track */
     border-radius: 5px;
   }
+
+  /* Daisies fade-in */
+  .daisy {
+    position: absolute;
+    top: 33%;
+    transform: translateY(-50%);
+    width: 30vw;
+    pointer-events: none;
+    z-index: 0;
+
+    /* fade-in setup */
+    opacity: 0;
+    transition: opacity 1.0s ease-in-out;
+  }
+
+  .daisy-left {
+    left: 0;
+    transform: translateY(-50%) scaleX(-1);
+  }
+
+  .daisy-right {
+    right: 0;
+  }
+
+  .daisy.fade-in {
+    opacity: 0.5;
+  }
+
+  @media (max-width: 1020px) {
+    .daisy {
+      display: none;
+    }
+  }
+
 </style>
+
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".daisy").forEach(d => d.classList.add("fade-in"));
+  });
+</script>
